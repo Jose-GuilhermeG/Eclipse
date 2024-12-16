@@ -18,6 +18,11 @@ def create_app():
 
 
     #bp and imports
+    from .main.bp import main as main_bp
+    from .auth.bp import auth as auth_bp
+
+    app.register_blueprint(main_bp,url_prefix = '/')
+    app.register_blueprint(auth_bp,url_suffix = "/user")
 
     @app.route('/test',methods = ['GET'])
     def teste_rota():
