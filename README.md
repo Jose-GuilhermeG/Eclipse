@@ -10,5 +10,5 @@
     
 <p>
     Sua base front é feita em html,css e javascript
-    já seu back usando <a hraf = 'https://flask.palletsprojects.com/en/stable/'> flask </a> 
+    já seu back usando <a href = 'https://flask.palletsprojects.com/en/stable/'> flask </a> 
 </p>
