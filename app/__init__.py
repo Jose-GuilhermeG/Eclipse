@@ -22,10 +22,17 @@ def create_app():
     from .auth.bp import auth as auth_bp
 
     app.register_blueprint(main_bp,url_prefix = '/')
-    app.register_blueprint(auth_bp,url_suffix = "/user")
+    app.register_blueprint(auth_bp,url_prefix = "/user")
 
     @app.route('/test',methods = ['GET'])
     def teste_rota():
         return '<h1> essa é uma rota de teste</h1>'
+    
+    try:
+        with app.app_context():
+            db.create_all()
+
+    except Exception as e:
+        print(e)
     
     return app
