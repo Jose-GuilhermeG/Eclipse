@@ -62,5 +62,5 @@ Ha um arquivo chamado run, basta executa-lo ou usar : 'python -m flask run' no t
 Licença 
 </h1>
 <p>
-Este projeto é licenciado sob a Licença MIT - veja o arquivo <a herf = 'LICENSE'>Licença</a> para mais
+Este projeto é licenciado sob a Licença MIT - veja o arquivo <a href = 'LICENSE'>Licença</a> para mais
 </p>
