@@ -51,6 +51,10 @@ def register():
                     db.session.add(usuario)
                     db.session.commit()
                     reposta = make_response(jsonify({'register' : True}))
+
+                    token = create_access_token(identity=usuario)
+                    reposta.set_cookie('Eclipse',token)
+
                     return reposta
                 except Exception as e:
                     print(e)

@@ -20,9 +20,11 @@ def create_app():
     #bp and imports
     from .main.bp import main as main_bp
     from .auth.bp import auth as auth_bp
+    from .produto.bp import produto as produto_bp
 
     app.register_blueprint(main_bp,url_prefix = '/')
     app.register_blueprint(auth_bp,url_prefix = "/user")
+    app.register_blueprint(produto_bp,url_prefix = '/produto')
 
     @app.route('/test',methods = ['GET'])
     def teste_rota():
