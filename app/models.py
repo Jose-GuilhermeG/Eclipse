@@ -34,7 +34,14 @@ class produto(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     nome_produto = db.Column(db.String(50),nullable=False)
     preço = db.Column(db.Float(),nullable=False)
+    imagen = db.Column(db.LargeBinary(),nullable=False)
     descrição = db.Column(db.Text(),nullable=True)
 
+    def __init__(self,nome,preço,imagem,descrição):
+        self.nome_produto = nome
+        self.preço = preço
+        self.imagen = imagem
+        self.descrição = descrição
+
     def __repr__(self):
-        return f'id_produto : {self.id}'
+        return f'id_produto : {self.id},Nome : {self.nome_produto}'

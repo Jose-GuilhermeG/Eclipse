@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 from .db import db
 from .jwt import jwt
@@ -13,6 +14,9 @@ def create_app():
     #database
     db.init_app(app)
 
+    #migrate
+    migrate = Migrate(app,db)
+
     #jwt
     jwt.init_app(app)
 
@@ -20,7 +24,7 @@ def create_app():
     #bp and imports
     from .main.bp import main as main_bp
     from .auth.bp import auth as auth_bp
-    from .produto.bp import produto as produto_bp
+    from .produto.bp import produtos as produto_bp
 
     app.register_blueprint(main_bp,url_prefix = '/')
     app.register_blueprint(auth_bp,url_prefix = "/user")

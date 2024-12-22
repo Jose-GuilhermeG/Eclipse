@@ -1,14 +1,32 @@
 from flask import render_template,redirect,request,jsonify,make_response
 from flask_jwt_extended import jwt_required,get_current_user,create_access_token
+from .token_controle import check_token,create_token
 from .bp import auth
 from ..models import user
 from ..db import db
+from ..suport.emails import recuperar_senha_email
 
-@auth.route('/',methods = ['GET'])
+@auth.route('/<email>',methods = ['GET','PUT'])
+@auth.route('/')
 @jwt_required(optional=True)
-def index_user():
-    print(get_current_user())
-    return render_template("user.html",)
+def index_user(email = None):
+
+    if email == None :
+        return render_template("user.html",)
+    
+    usuarios = db.session.query(user).filter_by(nome_user = email).first()
+
+    if usuarios:
+
+        user_logado = get_current_user()
+        
+        if user_logado != None and email == user_logado.email_user :
+            return f'{user_logado}'
+        
+
+        return jsonify({'err' : 'usuario não logado'})  
+    
+    return jsonify({'err' : 'usuario não existe'})
 
 @auth.route("/login",methods = ['POST'])
 def login():
@@ -36,7 +54,7 @@ def login():
 
     reposta = make_response(jsonify({'err':'tipo não suportado'}))
     return reposta
-    
+        
 @auth.route('/register',methods = ['POST'])
 def register():
     if request.content_type == "application/json":
@@ -69,3 +87,18 @@ def register():
 
     reposta = make_response(jsonify({'err':'tipo não suportado'}))
     return reposta
+
+@auth.route('/esqueci_senha', methods=["POST"])
+def esqueci_senha():
+    if request.content_type == "application/json":
+        email = request.get_json()['email']
+        usuario = db.session.query(user).filter_by(email_user=email).first()
+        recuperar_senha_email(usuario,create_token(usuario.nome_user))
+        return 'email enviado'
+
+@auth.route('/recuperar_senha/<nome>/<token>')
+def recuperar_senha(nome,token):
+    if check_token(nome,token):
+        return f'{token}'
+    
+    return 'algo errado'
