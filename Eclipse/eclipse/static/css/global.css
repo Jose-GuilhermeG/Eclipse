@@ -1,0 +1,19 @@
+/*font import*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+/*global selector*/
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+
+/*variaveis*/
+
+:root{
+    --branco : #FFFFFF ;
+    --branco_opaco : #F1F1F1 ;
+    --cinza : #303A3E ;
+    --azul : #18AEE0 ;
+    --vermelho : #E03F69 ;
+}
