@@ -6,11 +6,17 @@
     <title>Document</title>
     {%load static%}
     <link rel="stylesheet" href="{%static 'css/index.css'%}">
+    <script type="module" src="{%static 'js/index.js'%}"></script>
 </head>
-<body>
+<body>  
+        <!--para pegar uma imagem deve fazer o seguite : <img src = '{%static 'caminho'%}' -->
+        <!--em primeiro deve-se importa o static com {%load static%}-->
+        <!--ex : <img src = '{%static 'img/icones/menu.png'%}'-->
+        <!--o msm se aplica para arquivos js e css-->
+        <!--ex: <script src="{%static 'js/index.js'%}"></script> -->
     {%include 'componentes/nav_bar.html'%}
     <main>
-        teste
+        
     </main>
     <footer>
         

@@ -5,9 +5,7 @@ from .models import Produtos
 
 #models admin
 class ProdutosAdmin(admin.ModelAdmin):
-    class Meta:
-        model = Produtos
-        fields = ["id", "Nome",'Preço']
+    list_display = ['id','Nome','Preço']
 
 
 # Register your models here.
