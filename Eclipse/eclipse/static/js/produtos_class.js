@@ -15,6 +15,10 @@ class Produto{
         this.Preço_card = document.createElement("h2");
         this.button_comprar = document.createElement("button");
         
+        //eventos
+        this.img_card.addEventListener("click",()=>{
+            window.location = '/produtos/' + this.Nome
+        })
 
         //classes para css
         this.card.className = "";

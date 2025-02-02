@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {%load static%}
+    <link rel="stylesheet" href="{%static 'css/produto.css'%}">
+</head>
+<body>
+    {%include 'componentes/nav_bar.html'%}
+    <main>
+        <section>
+            <!--pode adicionar classes ou id para usar o css-->
+            <div>
+                <img src="{{produto.Imagem.url}}" alt="">
+            </div>
+            <h1>
+                {{produto.Nome}}
+            </h1>
+            <h2>
+                {{produto.Preço}}
+            </h2>
+            {%if cores%}
+                {% for cor in cores  %}
+                    {{cor.Cor}}
+                {% endfor %}
+            {% else %}
+                <h1>
+                    sem mais cores disponiveis
+                </h1>
+            {%endif%}
+            <p>
+                {{produto.Descrição}}
+            </p>
+
+        </section>
+        <section>
+
+        </section>
+    </main>
+    <footer>
+        
+    </footer>
+</body>
+</html>

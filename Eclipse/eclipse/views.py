@@ -1,9 +1,12 @@
 #django imports
 from django.shortcuts import render
 from django.views import View
+from django.http.response import HttpResponseNotFound
+from django.db.models import Q
 
 #restframework imports
 from rest_framework.views import APIView
+from rest_framework.decorators import api_view
 from rest_framework import status
 from rest_framework.response import Response
 
@@ -11,16 +14,35 @@ from rest_framework.response import Response
 from .serializers import ProdutosSerializers
 
 #models
-from .models import Produtos
+from .models import Produtos,Produto_Cor
 
 # Create your views here.
-class Index(View):
-    def get(self, request) :
-        return render(request, "index.html")
+def Index(request):
+    return render(request, "index.html")
+    
+class ProdutosView(View):
+    def get(self,request,nome):
+        try:
+            produto_consult = Produtos.objects.get(Nome=nome)
+            cores_produtos = Produto_Cor.objects.filter(Produto = produto_consult).all()
+            context = {'produto' : produto_consult,'cores' : cores_produtos}
+            return render(request, "produto.html",context=context)
+        except Produtos.DoesNotExist:
+            return HttpResponseNotFound()
     
 class ProdutosAllApi(APIView):
     def get(self, request,quantia) :
         produtos_quantia = Produtos.objects.all()[:quantia]
         produtosSerializers_var = ProdutosSerializers(produtos_quantia, many = True)
         return Response(produtosSerializers_var.data)
-    
+
+@api_view(['GET'])
+def Pesquisa_produto(request,pesquisa):
+        produtos_encontrados = Produtos.objects.filter(Nome__icontains = pesquisa).all()
+        if produtos_encontrados:
+            produto_result = ProdutosSerializers(produtos_encontrados,many = True)
+            response = Response(produto_result.data)
+            
+            return response
+        
+        return Response('nenhum produto encontrado')
