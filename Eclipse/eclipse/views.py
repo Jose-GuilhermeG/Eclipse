@@ -45,4 +45,5 @@ def Pesquisa_produto(request,pesquisa):
             
             return response
         
-        return Response('nenhum produto encontrado')
+        return Response('nenhum produto encontrado',status = status.HTTP_204_NO_CONTENT)
+    

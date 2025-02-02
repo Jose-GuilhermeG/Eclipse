@@ -1,0 +1,113 @@
+header{
+    width: 100%;
+    height: 15%;
+    background-image: url('/static/img/textura.png');
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#menu{
+    width: 5%;
+    height: 40%;
+    margin-left: 2.5%;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#menu_icone{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+#logo{
+    width:10%;
+    height: 20%;
+    margin-left: 2.5%;
+}
+
+#pesquisar_area{
+    width: 35%;
+    height: 35%;
+    background-color: white;
+    border-radius:25px ;
+    display: flex;
+    margin-left: 10%;
+}
+
+
+#pesquisa{
+    width: 80%;
+    position: relative;
+    margin-left: 5%;
+    border: none;
+    outline: none;
+}
+
+#pesquisar_button{
+    background: none;
+    border: none;
+    border-left: 1px black solid;
+    width: 10%;
+    height: 80%;
+    margin-left: 1%;
+    align-self: center;
+}
+
+#pesquisar_icone{
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+}
+
+header > nav{
+    width: 30%;
+    height: 100%;
+    margin-left: 5%;
+}
+
+ul{
+   height: 100%;
+   width: 100%;
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+}
+
+li{
+    width: 15%;
+    height: 30%;
+}
+
+li > a{
+    width: 100%;
+    height: 100%;
+}
+
+a > img{
+   width: 100%;
+   height: 100%;
+   object-fit: contain;
+}
+
+#produtos_pesquisa_local{
+    width: 70%;
+    height: 30%;
+    margin: auto;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #F1F1F1;
+    overflow-y: scroll;
+}
+
+.conteiner_pesquisa{
+    width: 80%;
+    height: 40%;
+    display:flex;
+    
+}
+

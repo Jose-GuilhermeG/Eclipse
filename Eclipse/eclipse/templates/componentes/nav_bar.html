@@ -1,3 +1,121 @@
+{%load static%}
+<link rel="stylesheet" href="{%static 'css/componentes/nav_bar.css' %}">
+
 <header>
-    nav bar
+    <button id="menu">
+        <img src="{%static 'img/icones/menu.png'%}" alt="" id="menu_icone">
+    </button>
+    <img src="{%static 'img/logo.png'%}" alt="" id="logo">
+    <div id="pesquisar_area">
+        <input type="search" id="pesquisa" placeholder="Buscar produtos, marcas e muito mais...">
+        <button id="pesquisar_button">
+            <img src="{%static 'img/icones/lupa.png'%}" alt="" id="pesquisar_icone">
+        </button>
+    </div>
+    <nav>
+        <ul>
+            <li>
+                <a href="">
+                    <img src="{%static 'img/icones/user.png'%}" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="{%static 'img/icones/suporte.png'%}" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="{%static 'img/icones/favoritos.png'%}" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="{%static 'img/icones/carrinho.png'%}" alt="">
+                </a>
+            </li>
+        </ul>
+    </nav>
+
 </header>
+<aside id="produtos_pesquisa_local">
+
+</aside>
+<!--provisorio-->
+
+<script>
+    const input_pesquisa = document.getElementById("pesquisa")
+    const produtos_pesquisa_local = document.getElementById("produtos_pesquisa_local")
+    const url = '/pesquisa/'
+
+// Cria um elemento de produto com imagem, nome e preço
+    function criar_itens(Img,Nome,Preço){
+        let conteiner = document.createElement('div')
+        let img = document.createElement('img')
+        let nome = document.createElement('h1')
+        let preço = document.createElement('h2')
+
+        img.src = Img
+        nome.textContent = Nome
+        preço.textContent = Preço
+
+        conteiner.className = 'conteiner_pesquisa'
+        conteiner.append(img,nome,preço)
+
+        return conteiner
+    }
+// Mostra os itens no contêiner de produtos
+    function mostrar_itens(array){
+
+        while(produtos_pesquisa_local.firstChild){
+            produtos_pesquisa_local.removeChild(produtos_pesquisa_local.firstChild)
+        }
+
+        if(array != null){
+            console.log(array)
+            for(let element of array){
+                let item = criar_itens(element.Imagem,element.Nome,element.Preço)
+                produtos_pesquisa_local.appendChild(item)
+            }
+        }
+        else{
+            let mensagem = document.createElement('h1')
+            mensagem.textContent = 'Nenhum produto encontrado'
+            produtos_pesquisa_local.append(mensagem)
+        }
+    }
+
+    async function realizar_pesquisa(valor){
+        if(valor){
+            let url_pesquisa = url + valor
+            try{
+                let requisição = await fetch(url_pesquisa)
+                if(requisição.status != 200){
+                    return null
+                }
+                if(requisição.ok){
+                    requisição = requisição.json()
+                    return requisição
+                }
+
+            }
+            catch (e){
+                console.error(e)
+                return {'err' : 'erro interno, perdão'}
+            }
+        }
+
+        return null
+      
+    }
+    input_pesquisa.addEventListener('input',async ()=>{
+        produtos_pesquisa_local.style.display = 'flex'
+        mostrar_itens(await realizar_pesquisa(input_pesquisa.value))
+    })
+    
+    input_pesquisa.addEventListener('blur',()=>{
+        produtos_pesquisa_local.style.display = 'none'
+
+    })
+
+</script>
