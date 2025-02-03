@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--temporario-->
+    {%load static%}
+    <link rel="stylesheet" href="{%static 'css/global.css'%}">
+</head>
+<body>
+    {%include 'componentes/nav_bar.html'%}
+    <main>
+        <section>
+            {%if carrinho != None%}
+                {%for produto in carrinho%}
+                    <p>
+                        {{produto}}
+                    </p>
+                {%endfor%}
+            {%endif%}
+        </section>
+    </main>
+</body>
+</html>

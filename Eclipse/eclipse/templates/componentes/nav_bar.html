@@ -15,7 +15,7 @@
     <nav>
         <ul>
             <li>
-                <a href="">
+                <a href="{%url 'user'%}">
                     <img src="{%static 'img/icones/user.png'%}" alt="">
                 </a>
             </li>
@@ -30,7 +30,7 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{%url 'carrinho'%}">
                     <img src="{%static 'img/icones/carrinho.png'%}" alt="">
                 </a>
             </li>
@@ -72,7 +72,6 @@
         }
 
         if(array != null){
-            console.log(array)
             for(let element of array){
                 let item = criar_itens(element.Imagem,element.Nome,element.Preço)
                 produtos_pesquisa_local.appendChild(item)
@@ -94,7 +93,7 @@
                     return null
                 }
                 if(requisição.ok){
-                    requisição = requisição.json()
+                    requisição = await requisição.json()
                     return requisição
                 }
 

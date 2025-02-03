@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {%load static%}
+    <!--temporario-->
+    <style>
+        /*global*/
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        html,body{
+            width: 100%;
+            height: 100vh;
+            background-color: #303A3E;
+        }
+
+        main{
+            height: 100%;
+            width: 100%;
+        }
+        section{
+            height: 100%;
+            width: 100%;
+        }
+
+        #conteiner_form{
+            width: 25%;
+            height: 80%;
+            overflow: hidden;
+            margin: auto;
+            position: relative;
+            top:10%;
+            border-radius: 20px;
+            background-image: url('/static/img/textura.png');
+        }
+
+        #logo{
+            width: 30%;
+            margin: auto;
+            display: block;
+            margin-top: 15%;
+        }
+
+        #cadastrar_form{
+            width: 100%;
+            height:90% ;
+        }
+
+        #login_form{
+            width: 100%;
+            height: 80%;
+            border-radius: 60px 60px 0 0;
+            background-color: white ;
+            position: absolute;
+            top: 25%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .form_titulo{
+            margin-bottom: 10%;
+            margin-top: 5%;
+        }
+
+        .icone_form_titulo{
+            width: 40px;
+            height: 40px;
+
+        }
+
+        .input_local{
+            background-color: #303A3E;
+            width: 70%;
+            height: 40px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            border-radius: 25px;
+            margin-bottom: 5%;
+        }
+
+        .icone_input{
+            height: 100%;
+            width: 10%;
+            object-fit: contain;
+            margin-left: 5%;
+
+        }
+        
+        .input{
+            width: 75%;
+            height: 100%;
+            background: none;
+            outline: none;
+            border: none;
+            color: white;
+        }
+
+        .input::placeholder{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section>
+            <div id="conteiner_form">
+                <img src="{%static 'img/logo.png'%}" alt="" id="logo">
+                <form action="" method="post" id="cadastro_form">
+                    <h1 class="form_titulo">
+                        <img src="{%static 'img/icones/perfil.png'%}" alt="" class="icone_form_titulo">
+                        cadastrar
+                    </h1>
+                    <div class="input_local">
+                        <img src="{%static 'img/icones/perfil.png'%}" alt="" class="icone_input">
+                        {{form_cadastro.Nome}}
+                    </div>
+                    <div class="input_local">
+                        <img src="{%static 'img/icones/email.png'%}" alt="" class="icone_input">
+                        {{form_cadastro.Email}}
+                    </div>
+                    <div class="input_local">
+                        <img src="{%static 'img/icones/senha.png'%}" alt="" class="icone_input">
+                        {{form_cadastro.Senha}}
+                    </div>
+
+                    <input type="submit" value="Cadastrar">
+
+                </form>
+                <form action="" method="post" id="login_form">
+                    <h1 class="form_titulo">
+                        <img src="{%static 'img/icones/perfil.png'%}" alt="" class="icone_form_titulo">
+                        entrar
+                    </h1>
+
+                    <div class="input_local">
+                        <img src="{%static 'img/icones/email.png'%}" alt="" class="icone_input">
+                        {{form_login.Email}}
+                    </div>
+                    <div class="input_local">
+                        <img src="{%static 'img/icones/senha.png'%}" alt="" class="icone_input">
+                        {{form_login.Senha}}
+                    </div>
+                    <input type="submit" value="entrar">
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
