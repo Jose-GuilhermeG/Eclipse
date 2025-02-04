@@ -12,6 +12,7 @@
     {%include 'componentes/nav_bar.html'%}
     <main>
         <section>
+            {{user}}
             {%if carrinho != None%}
                 {%for produto in carrinho%}
                     <p>

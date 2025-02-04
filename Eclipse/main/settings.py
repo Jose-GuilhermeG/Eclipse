@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_simplejwt',
     'eclipse',
     'account',
 ]
@@ -118,6 +119,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+#stati
 STATIC_URL = 'static/'
 STATICFILES_DIR = [BASE_DIR/'static']
 
@@ -129,3 +131,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #files
 MEDIA_URL = '/media/'
 MEDIA_ROOT= BASE_DIR/'media'
+
+#jwt
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+
+from datetime import timedelta
+
+SIMPLEJWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=50),
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
+}

@@ -46,35 +46,58 @@
             margin-top: 15%;
         }
 
-        #cadastrar_form{
+        #cadastro_form{
             width: 100%;
             height:90% ;
-        }
-
-        #login_form{
-            width: 100%;
-            height: 80%;
-            border-radius: 60px 60px 0 0;
-            background-color: white ;
-            position: absolute;
-            top: 25%;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
         }
 
+        #cadastro_titulo{
+            color: white;
+            margin-top: 25px;
+            transform: translateY(50px);
+        }
+
+        #cadastro_form > input{
+            background-color: white;
+            color: black;
+        }
+        
+        #login_form{
+            width: 100%;
+            height: 80%;
+            border-radius: 60px 60px 0 0;
+            background-color: white ;
+            position: absolute;
+            transform: translateY(-100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            transition: 450ms ease-in-out;
+        }
+        
+        #entrar_aviso{
+            display: none;
+            transform: translateY(150px);
+            transition: 400ms ease-in-out;
+        }
+        
         .form_titulo{
+            transition: 400ms ease-in-out;
             margin-bottom: 10%;
             margin-top: 5%;
         }
-
+        
         .icone_form_titulo{
             width: 40px;
             height: 40px;
-
+            
         }
-
+        
         .input_local{
             background-color: #303A3E;
             width: 70%;
@@ -85,13 +108,19 @@
             border-radius: 25px;
             margin-bottom: 5%;
         }
-
+        
+        .cadastro_input{
+            background-color: white;
+        }
+        .cadastro_input > input::placeholder{
+            color: black;
+        }
         .icone_input{
             height: 100%;
             width: 10%;
             object-fit: contain;
             margin-left: 5%;
-
+            
         }
         
         .input{
@@ -102,9 +131,23 @@
             border: none;
             color: white;
         }
-
+        
+        .cadastro_input > .input{
+            color: black;
+        }
         .input::placeholder{
             color: white;
+        }
+        
+        input{
+            width: 60%;
+            height: 30px;
+            border: none;
+            border-radius: 25px;
+            background-color: #303A3E;
+            color: white;
+            cursor: pointer;
+
         }
     </style>
 </head>
@@ -113,29 +156,39 @@
         <section>
             <div id="conteiner_form">
                 <img src="{%static 'img/logo.png'%}" alt="" id="logo">
-                <form action="" method="post" id="cadastro_form">
-                    <h1 class="form_titulo">
+                <form action="{%url 'user_cadastro'%}" method="post" id="cadastro_form">
+                    {% csrf_token %}
+                    <h1 class="form_titulo" id="cadastro_titulo">
                         <img src="{%static 'img/icones/perfil.png'%}" alt="" class="icone_form_titulo">
                         cadastrar
                     </h1>
-                    <div class="input_local">
+                    <div class="input_local cadastro_input">
                         <img src="{%static 'img/icones/perfil.png'%}" alt="" class="icone_input">
                         {{form_cadastro.Nome}}
                     </div>
-                    <div class="input_local">
+                    <div class="input_local cadastro_input">
                         <img src="{%static 'img/icones/email.png'%}" alt="" class="icone_input">
                         {{form_cadastro.Email}}
                     </div>
-                    <div class="input_local">
+                    <div class="input_local cadastro_input">
                         <img src="{%static 'img/icones/senha.png'%}" alt="" class="icone_input">
                         {{form_cadastro.Senha}}
                     </div>
 
                     <input type="submit" value="Cadastrar">
 
+                    
+
                 </form>
-                <form action="" method="post" id="login_form">
-                    <h1 class="form_titulo">
+                <form action="{%url 'user_login'%}" method="post" id="login_form">
+                    {%csrf_token%}
+                    <span id="entrar_aviso">
+                        Ja tem uma conta? 
+                        <button id="entrar">
+                            entrar
+                        </button>
+                    </span>
+                    <h1 class="form_titulo" id="entrar_titulo">
                         <img src="{%static 'img/icones/perfil.png'%}" alt="" class="icone_form_titulo">
                         entrar
                     </h1>
@@ -149,9 +202,56 @@
                         {{form_login.Senha}}
                     </div>
                     <input type="submit" value="entrar">
+                    <span>
+                        Não tem uma conta? 
+                        <button id="criar_conta">
+                            Criar Conta
+                        </button>
+                    </span>
                 </form>
             </div>
         </section>
     </main>
+    <!--temporario-->
+    <script>
+        const login_form = document.getElementById('login_form')
+        const criar_conta = document.getElementById('criar_conta')
+        const entrar = document.getElementById('entrar')
+        const entrar_aviso = document.getElementById('entrar_aviso')
+        const entrar_titulo = document.getElementById('entrar_titulo')
+        const cadastro_titulo = document.getElementById('cadastro_titulo')
+        const botoes = Array.from(document.getElementsByTagName('button'))
+
+        botoes.forEach(element =>{
+            element.addEventListener('click',(e)=>{
+                e.preventDefault()
+            })
+        })
+
+        criar_conta.addEventListener("click",()=>{
+            login_form.style.transform = 'translateY(-15%)'
+            entrar_aviso.style.display = 'block'
+            login_form.style.borderRadius = '0' 
+            cadastro_titulo.style.transform = 'translateY(0px)'
+            setTimeout(()=>{
+                entrar_titulo.style.transform = 'translateY(50px)'
+                entrar_aviso.style.transform = 'translateY(20px)'
+                
+            },450)
+        })
+        
+        entrar.addEventListener('click',()=>{
+            entrar_aviso.style.transform = 'translateY(150px)'
+            setTimeout(()=>{
+                cadastro_titulo.style.transform = 'translateY(50px)'
+                login_form.style.transform = 'translateY(-100%)'
+                login_form.style.borderRadius = '60px 60px 0 0 ' 
+                entrar_aviso.style.display = 'none'
+                entrar_titulo.style.transform = 'translateY(0)'
+                
+            },450)
+            
+        })
+    </script>
 </body>
 </html>

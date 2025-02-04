@@ -1,5 +1,6 @@
 #django imports
 from django import forms
+from django.forms import ValidationError
 
 #forms
 class UserMixin(forms.Form):
@@ -8,7 +9,9 @@ class UserMixin(forms.Form):
     
 class LoginForm(UserMixin):
     def clean(self):
+        email = self.cleaned_data["Email"]
+        
         return super().clean()
     
 class CadastrarForm(UserMixin):
-    Nome = forms.CharField()
+    Nome = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Nome",'class' : 'input'}))
