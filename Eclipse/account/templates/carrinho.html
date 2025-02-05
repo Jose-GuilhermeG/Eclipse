@@ -6,7 +6,7 @@
     <title>Document</title>
     <!--temporario-->
     {%load static%}
-    <link rel="stylesheet" href="{%static 'css/global.css'%}">
+    <link rel="stylesheet" href="{%static 'css/carrinho.css'%}">
 </head>
 <body>
     {%include 'componentes/nav_bar.html'%}
@@ -14,11 +14,39 @@
         <section>
             {{user}}
             {%if carrinho != None%}
-                {%for produto in carrinho%}
-                    <p>
-                        {{produto}}
-                    </p>
+                {%for item in carrinho%}
+                   {%include 'componentes/carrinho_produtos.html'%}
                 {%endfor%}
+            {%else%}
+                <h1 class="aviso">
+                    Não ha nenhum produto no carrinho
+                </h1>
+            {%endif%}
+        </section>
+        <section>
+            {%if carrinho != None%}
+            <ul>
+                {%for item in carrinho%}
+                   <li>
+                    <span class="nome_produto">
+                        {{item.Produtos.Nome}}
+                    </span>
+                    <span class="preço_produto">
+                        {{item.Produtos.Preço}}
+                    </span>
+                   </li>
+                {%endfor%}
+                total : {{Valor_total}}
+            </ul>
+
+            {%else%}
+            <h1 class="aviso">
+                Não ha nenhum produto no carrinho
+            </h1>
+            <h2>
+                total : 0
+            </h2>
+              
             {%endif%}
         </section>
     </main>

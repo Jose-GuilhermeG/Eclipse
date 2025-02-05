@@ -18,6 +18,9 @@ from .utils.jwt import pegar_user_jwt
 #froms import
 from .forms import LoginForm,CadastrarForm
 
+#models import
+from .models import Carriho
+
 # Create your views here.
 class UserEnter(View):
     def get(self, request):
@@ -50,7 +53,7 @@ class UserLogin(APIView):
             
 
         return redirect('user')
-
+#falta o tratamento de erro
 class UserRegister(APIView):
     def post( self, request ):
         Formulario = CadastrarForm(request.POST)
@@ -75,9 +78,19 @@ class UserRegister(APIView):
         
         return redirect("user")
 
-def Carrinho(request):
+def Carrinho_view(request):
     user = pegar_user_jwt(request)
-    context = {'carrinho' : request.session.get('carrinho',None),'user' : user}
+    context = {'user' : user}
+    if user == None:
+        context['carrinho'] = request.session.get('carrinho',None)
+    else:
+        carrinho = Carriho.objects.filter(User = user).all()
+        context['carrinho'] = carrinho
+        total = 0
+        for item in carrinho:
+            total += item.Produtos.Preço
+        context["Valor_total"] = total
+            
     response = render(request, "carrinho.html",context=context)
     return response
 

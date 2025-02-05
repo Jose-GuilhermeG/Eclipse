@@ -12,16 +12,49 @@
     {%include 'componentes/nav_bar.html'%}
     <main>
         <section>
-            <div id="baner">
-
+            <div id="banner" role="banner">
+                <div id="conteudo">
+                    <h1 id="banner_titulo">
+                        Airpods max
+                    </h1>
+                    <p id="more_info">
+                        <a href="">Mais informações e Produtos</a>
+                    </p>
+                </div>
+                <img src="{%static 'img/Airpods max.png'%}" alt="" id="imagem_banner">
+                <div class="button_local">
+                    <button class="banner_button">
+                        comprar
+                    </button>
+                    <button class="banner_button">
+                        detalhes
+                    </button>
+                </div>
             </div>
-            <div class="categoria"></div>
-            <div class="categoria"></div>
-            <div class="categoria"></div>
+            <div id="conteiner_categoria">
+                <div class="categoria cinza">
+                    <img src="{%static 'img/categorias/gamer.png'%}" alt="" class="categoria_imagem">
+                    <h1 class="categoria_nome">
+                        gamer
+                    </h1>
+                </div>
+                <div class="categoria azul">
+                    <img src="{%static 'img/categorias/escritorio.png'%}" alt="" class="categoria_imagem">
+                    <h1 class="categoria_nome">
+                        Notebooks e escritorio
+                    </h1>
+                </div>
+                <div class="categoria vermelho">
+                    <img src="{%static 'img/categorias/upgrade.png'%}" alt="" class="categoria_imagem">
+                    <h1 class="categoria_nome">
+                        upgrade
+                    </h1>
+                </div>
+            </div>
         </section>
         <section>
+            <h1 class="titulo_produtos_conteiner">voce pode gostar</h1>
             <div id="voce_pode_gostar" class="produtos_conteiner">
-                <h1 class="titulo_produtos_conteiner">voce pode gostar</h1>
             </div>
         </section>
     </main>

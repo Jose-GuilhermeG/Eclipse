@@ -7,6 +7,9 @@ class Produtos(models.Model):
     Descrição = models.TextField(null=False)
     Imagem = models.ImageField(upload_to='media/',null=False)
     
+    def __str__(self):
+        return self.Nome
+    
 class Produto_Cor(models.Model):
     Produto = models.ForeignKey(Produtos,null=False,on_delete=models.CASCADE)
     Cor = models.CharField(max_length=50,)

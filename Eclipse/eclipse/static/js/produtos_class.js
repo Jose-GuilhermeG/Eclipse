@@ -21,16 +21,16 @@ class Produto{
         })
 
         //classes para css
-        this.card.className = "";
-        this.img_card.className = "";
-        this.Nome_card.className = "";
-        this.Preço_card.className = "";
-        this.button_comprar.className = "";
+        this.card.className = "produto";
+        this.img_card.className = "produto_imagem";
+        this.Nome_card.className = "produto_nome";
+        this.Preço_card.className = "produto_preço";
+        this.button_comprar.className = "produto_button";
 
         //valores viziveis
         this.img_card.src = this.Imagem
         this.Nome_card.textContent = this.Nome
-        this.Preço_card.textContent = this.Preço
+        this.Preço_card.textContent = 'R$' + this.Preço
         this.button_comprar.textContent = 'comprar';
 
         //append
