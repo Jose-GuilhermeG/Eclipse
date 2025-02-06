@@ -33,4 +33,4 @@ function pedir_produto(quantia,local){
 }
 
 //teste, o primeiro paramentro é a quantia, o segundo onde os itens vão ficar
-pedir_produto(6,voce_pode_gostar_conteiner)
+pedir_produto(9,voce_pode_gostar_conteiner)

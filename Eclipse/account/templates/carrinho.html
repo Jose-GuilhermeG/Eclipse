@@ -13,7 +13,7 @@
     <main>
         <section>
             {{user}}
-            {%if carrinho != None%}
+            {%if carrinho%}
                 {%for item in carrinho%}
                    {%include 'componentes/carrinho_produtos.html'%}
                 {%endfor%}
@@ -24,7 +24,7 @@
             {%endif%}
         </section>
         <section>
-            {%if carrinho != None%}
+            {%if carrinho%}
             <ul>
                 {%for item in carrinho%}
                    <li>
@@ -32,7 +32,7 @@
                         {{item.Produtos.Nome}}
                     </span>
                     <span class="preço_produto">
-                        {{item.Produtos.Preço}}
+                        {{item.Quantia}} X {{item.Produtos.Preço}}
                     </span>
                    </li>
                 {%endfor%}

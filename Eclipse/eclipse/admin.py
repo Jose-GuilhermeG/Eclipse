@@ -8,7 +8,7 @@ class ProdutosAdmin(admin.ModelAdmin):
     list_display = ['id','Nome','Preço']
     
 class ProdutoCorAdmin(admin.ModelAdmin):
-    list_display = ['id','Cor']
+    list_display = ['Produto','Cor']
 
 
 # Register your models here.

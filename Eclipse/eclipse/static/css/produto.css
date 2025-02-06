@@ -1,1 +1,97 @@
 @import url('global.css');
+
+main{
+    width: 100%;
+    height: 100%;
+}
+
+section{
+    height: 100%;
+    display: flex;
+}
+
+#imagem_produto_view{
+    border: 2px black solid;
+    border-radius: 15px;
+    width: 35%;
+    height: 70%;
+    margin: 5% 0 0 5%;
+}
+
+#produto_imagem{
+    height: 70%;
+    width: 70%;
+    object-fit: contain;
+    margin: 15% 0 0 20%;
+}
+
+#conteudo{
+    display: flex;
+    width: 30%;
+    height: 70% ;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 5% 0 0 2.5%;
+}
+
+#nome{
+    font-size: 3rem;
+    text-transform: capitalize;
+    font-weight: 500;
+    margin-bottom: 5%;
+}
+
+#avaliação{
+    width: 30%;
+    margin-bottom: 5%;
+}
+
+#preço{
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 5%;
+    
+}
+
+#lista_cores{
+    display: flex;
+    width: 100%;
+    height: 20%;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+aside{
+    height: 70%;
+    width: 20% ;
+    position: sticky;
+    top: 0;
+    margin: 5% 0 0 2.5%;
+    border: 2px solid black;
+    
+}
+
+aside > button{
+    width: 90%;
+    height: 10%;
+    color: white;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    border: none;
+    border-radius: 5px;
+    margin: 5% 0 0 5%;
+}
+
+#descrição{
+    position: absolute;
+    bottom: 0;
+}
+
+.cinza{
+    background-color: var(--cinza);
+}
+
+.azul{
+    background-color: var(--azul);
+}

@@ -59,6 +59,10 @@
         nome.textContent = Nome
         preço.textContent = Preço
 
+        conteiner.addEventListener('click',()=>{
+            window.location = '/produtos/' + Nome
+        })
+
         conteiner.className = 'conteiner_pesquisa'
         conteiner.append(img,nome,preço)
 
@@ -112,7 +116,7 @@
         mostrar_itens(await realizar_pesquisa(input_pesquisa.value))
     })
     
-    input_pesquisa.addEventListener('blur',()=>{
+    document.body.addEventListener('click',()=>{
         produtos_pesquisa_local.style.display = 'none'
 
     })

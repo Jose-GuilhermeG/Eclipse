@@ -88,7 +88,7 @@ def Carrinho_view(request):
         context['carrinho'] = carrinho
         total = 0
         for item in carrinho:
-            total += item.Produtos.Preço
+            total += item.Produtos.Preço * item.Quantia
         context["Valor_total"] = total
             
     response = render(request, "carrinho.html",context=context)
@@ -97,3 +97,9 @@ def Carrinho_view(request):
 class Perfil(View):
     def get(self,request):
         return render(request, "perfil.html",)
+    
+#falta o tratamento de erro
+class Carrinho_add(APIView):
+    def post(self,request):
+        print(request.COOKIES)
+        return Response('teste')

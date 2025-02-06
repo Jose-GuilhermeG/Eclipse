@@ -6,31 +6,57 @@
     <title>Document</title>
     {%load static%}
     <link rel="stylesheet" href="{%static 'css/produto.css'%}">
+    <script type="module" src="{%static 'js/produtos_views.js'%}"></script>
 </head>
 <body>
     {%include 'componentes/nav_bar.html'%}
     <main>
         <section>
             <!--pode adicionar classes ou id para usar o css-->
-            <div>
-                <img src="{{produto.Imagem.url}}" alt="">
+            <div id="imagem_produto_view">
+                <img src="{{produto.Imagem.url}}" alt="" id = 'produto_imagem'>
             </div>
-            <h1>
-                {{produto.Nome}}
-            </h1>
-            <h2>
-                {{produto.Preço}}
-            </h2>
-            {%if cores%}
-                {% for cor in cores  %}
-                    {{cor.Cor}}
-                {% endfor %}
-            {% else %}
-                <h1>
-                    sem mais cores disponiveis
+            <div id="conteudo">
+                <h1 id="nome">
+                    {{produto.Nome}}
                 </h1>
-            {%endif%}
-            <p>
+                <img src="{%static 'img/estrelas.png'%}" alt="" id="avaliação">
+                <h2 id="preço">
+                    R${{produto.Preço}}
+                </h2>
+                <h3>
+                    cor
+                </h3>
+                <ul id="lista_cores">
+                    {%if cores%}
+                    {% for cor in cores  %}
+                        <li>
+                            <span>
+                                {{cor.Cor}}
+                            </span>
+                            <div>
+                                {{cor.Cor_code}}
+                            </div>
+                        </li>
+                    {% endfor %}
+                    {% else %}
+                        <h1>
+                            sem mais cores disponiveis
+                        </h1>
+                    {%endif%}
+                </ul>
+                
+            </div>
+            <aside>
+                <button class="cinza" id="carrinho_button">
+                    carrinho
+                </button>
+                <button class="azul">
+                    comprar
+                </button>
+            </aside>
+            
+            <p id="descrição">
                 {{produto.Descrição}}
             </p>
 

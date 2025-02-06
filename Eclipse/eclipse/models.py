@@ -13,5 +13,6 @@ class Produtos(models.Model):
 class Produto_Cor(models.Model):
     Produto = models.ForeignKey(Produtos,null=False,on_delete=models.CASCADE)
     Cor = models.CharField(max_length=50,)
+    Cor_code = models.CharField(max_length=10,default='#ffffff')
     Preço = models.FloatField(null=False)
     Imagem = models.ImageField(upload_to='cores_produto/')
