@@ -2,7 +2,7 @@
 from django.urls import path
 
 #views import
-from .views import Index,ProdutosAllApi,ProdutosView,Pesquisa_produto
+from .views import Index,ProdutosAllApi,ProdutosView,Pesquisa_produto,ProdutosCategoriasView
 
 #urls
 urlpatterns = [
@@ -10,5 +10,5 @@ urlpatterns = [
     path('produtos/quantia/<int:quantia>',ProdutosAllApi.as_view(), name="produtos_all"),
     path('produtos/<str:nome>',ProdutosView.as_view(), name="produto"),
     path('pesquisa/<pesquisa>',Pesquisa_produto,name='pesquisa'),
-    
+    path('categorias/<categoria>',ProdutosCategoriasView.as_view(),name='Categoria_view')
 ]

@@ -14,7 +14,7 @@ from rest_framework.response import Response
 from .serializers import ProdutosSerializers
 
 #models
-from .models import Produtos,Produto_Cor
+from .models import Produtos,Produto_Cor,Categorias
 
 # Create your views here.
 def Index(request):
@@ -47,3 +47,12 @@ def Pesquisa_produto(request,pesquisa):
         
         return Response('nenhum produto encontrado',status = status.HTTP_204_NO_CONTENT)
     
+class ProdutosCategoriasView(View):
+    def get(self, request,categoria):
+        try:
+            categorai_escolhida = getattr(Categorias, categoria.upper()).value
+            produtos = Produtos.objects.filter(Categoria = categorai_escolhida ).all()
+            context = {"produtos":produtos}
+            return render(request, "categorias.html",context=context)
+        except AttributeError:
+            return HttpResponseNotFound()

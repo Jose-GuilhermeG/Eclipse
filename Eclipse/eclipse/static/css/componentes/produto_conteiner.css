@@ -1,0 +1,42 @@
+.titulo_produtos_conteiner{
+    margin: auto;
+    margin-top: 5%;
+    width: 500px;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 500;
+    border-bottom:4px solid black;
+    text-transform: uppercase;
+}
+
+.produto{
+    width: 20%;
+    height: 50vh;
+    background-color: var(--branco_opaco);
+    margin: 5% ;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.produto_imagem{
+    width: 80%;
+    height: 60%;
+    object-fit: contain;
+}
+
+.produto_preço{
+    font-size: 15px;
+    margin-top: 5px;
+}
+
+.produto_button{
+    width: 80%;
+    height: 10%;
+    color: white;
+    border: none;
+    position: absolute;
+    bottom: 5%;
+    background-color: var(--azul);
+    left: 10%;
+}

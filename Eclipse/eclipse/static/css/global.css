@@ -1,6 +1,9 @@
 /*font import*/
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
+/*componentes*/
+@import url('componentes/produto_conteiner.css');
+
 /*global selector*/
 *{
     margin: 0;
