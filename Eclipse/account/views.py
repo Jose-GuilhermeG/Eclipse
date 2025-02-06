@@ -19,7 +19,7 @@ from .utils.jwt import pegar_user_jwt
 from .forms import LoginForm,CadastrarForm
 
 #models import
-from .models import Carriho
+from .models import Carriho,Produtos
 
 # Create your views here.
 class UserEnter(View):
@@ -69,8 +69,7 @@ class UserRegister(APIView):
                 user = User(username = Nome,email = Email)
                 user.set_password(Senha)
                 user.save()
-                user_autenticado = authenticate(Nome)
-                token = RefreshToken.for_user(user_autenticado)
+                token = RefreshToken.for_user(user)
                 response = redirect("perfil")
                 response.set_cookie('access',str(token.access_token))
                 return response
@@ -101,5 +100,11 @@ class Perfil(View):
 #falta o tratamento de erro
 class Carrinho_add(APIView):
     def post(self,request):
-        print(request.COOKIES)
-        return Response('teste')
+        user = pegar_user_jwt(request)
+        quantia = request.data.get('quantia')
+        produto = request.data.get('produto')
+        produto = Produtos.objects.filter(Nome__icontains = produto).first()
+        if user != None:
+            carrinho_novo = Carriho(User = user,Produtos = produto,Quantia =quantia)
+            carrinho_novo.save()
+        return Response({},status=status.HTTP_200_OK)

@@ -1,15 +1,31 @@
 const url = '/user/carrinho/add'
-const cookies = document.cookie
+const produto = document.getElementById('nome').innerText
+let carrinho_button = document.getElementById("carrinho_button")
 
-function pegar_cookie_user(cookies){
-    let cookies_separados =  cookies.split(';')
-    let user = String()
-    for(let cookie_number in cookies_separados) {
-        if(cookies_separados[cookie_number].includes('access')){
-            user = cookies_separados[cookie_number].split('=')[1]
-            return user
+async function Add_carrinho(){
+    let corpo = {
+        "method": "POST",
+        "headers" : {
+            'Content-Type':'application/json'
+        },
+        "body": JSON.stringify({
+            "produto": produto,
+            'quantia' : 1,
+        }),
+    }
+    try{
+        let requisição = await fetch(url,corpo)
+        if(requisição.ok){
+            window.location.href = "/user/carrinho"
         }
+
+    }
+    catch(e){
+        console.log(e)
+        return e
     }
 }
 
-
+carrinho_button.addEventListener("click",()=>{
+    Add_carrinho()
+})
