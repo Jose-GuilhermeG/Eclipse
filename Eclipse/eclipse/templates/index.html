@@ -32,24 +32,30 @@
                 </div>
             </div>
             <div id="conteiner_categoria">
-                <div class="categoria cinza">
-                    <img src="{%static 'img/categorias/gamer.png'%}" alt="" class="categoria_imagem">
-                    <h1 class="categoria_nome">
-                        gamer
-                    </h1>
-                </div>
-                <div class="categoria azul">
-                    <img src="{%static 'img/categorias/escritorio.png'%}" alt="" class="categoria_imagem">
-                    <h1 class="categoria_nome">
-                        Notebooks e escritorio
-                    </h1>
-                </div>
-                <div class="categoria vermelho">
-                    <img src="{%static 'img/categorias/upgrade.png'%}" alt="" class="categoria_imagem">
-                    <h1 class="categoria_nome">
-                        upgrade
-                    </h1>
-                </div>
+                <a href="{% url 'Categoria_view' 'gamer' %}">
+                    <div class="categoria cinza">
+                        <img src="{%static 'img/categorias/gamer.png'%}" alt="" class="categoria_imagem">
+                        <h1 class="categoria_nome">
+                            gamer
+                        </h1>
+                    </div>
+                </a>
+                <a href="{%url 'Categoria_view' 'escritorio'%}">
+                    <div class="categoria azul">
+                        <img src="{%static 'img/categorias/escritorio.png'%}" alt="" class="categoria_imagem">
+                        <h1 class="categoria_nome">
+                            Notebooks e escritorio
+                        </h1>
+                    </div>
+                </a>
+                <a href="{%url 'Categoria_view' 'upgrade'%}">
+                    <div class="categoria vermelho">
+                        <img src="{%static 'img/categorias/upgrade.png'%}" alt="" class="categoria_imagem">
+                        <h1 class="categoria_nome">
+                            upgrade
+                        </h1>
+                    </div>
+                </a>
             </div>
         </section>
         <section>

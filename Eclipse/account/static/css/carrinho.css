@@ -1,1 +1,60 @@
 @import url('/static/css/global.css');
+
+body{
+    overflow-y: hidden;
+}
+
+main{
+    height: 100%;
+    width: 100%;
+}
+section{
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+aside{
+    width: 25%;
+    height: 85vh;
+    position: absolute;
+    right: 0;
+    top: 15%;
+}
+
+#display{
+    width: 100%;
+    background-color: var(--cinza);
+    height: 100%;
+}
+
+#produtos_itens{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    && li{
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px;
+        width: 80%;
+        
+        && .nome_produto{
+            color: white;
+            width: 100%;
+            font-size: 2rem;
+        }
+
+        && .preço_produto{
+            
+            align-items: center;
+            color: var(--azul);
+        }
+    }
+
+}
+

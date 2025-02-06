@@ -121,10 +121,16 @@ section{
     margin: auto;
 }
 
+#conteiner_categoria > a{
+    height: 90%;
+    width: 30%;
+    text-decoration: none;
+}
+
 .categoria{
     margin-top: 5%;
-    width: 30%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
     border-radius:15px;
     text-align: center;
     cursor: pointer;
