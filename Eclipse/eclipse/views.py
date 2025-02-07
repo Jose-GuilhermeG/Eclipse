@@ -11,10 +11,10 @@ from rest_framework import status
 from rest_framework.response import Response
 
 #serializers imports
-from .serializers import ProdutosSerializers
+from .serializers import ProdutosSerializers,PromoçãoSerializers
 
 #models
-from .models import Produtos,Produto_Cor,Categorias
+from .models import Produtos,Produto_Cor,Categorias,Promoção
 
 # Create your views here.
 def Index(request):
@@ -24,6 +24,7 @@ class ProdutosView(View):
     def get(self,request,nome):
         try:
             produto_consult = Produtos.objects.get(Nome=nome)
+            print(produto_consult.desconto())
             cores_produtos = Produto_Cor.objects.filter(Produto = produto_consult).all()
             context = {'produto' : produto_consult,'cores' : cores_produtos}
             return render(request, "produto.html",context=context)

@@ -2,9 +2,17 @@ import Produto from "./produtos_class.js";
 
 const url = '/'
 
+let more = document.getElementById('more')
+let autal = 6
+
 const voce_pode_gostar_conteiner  = document.getElementById("voce_pode_gostar");
 
 function criar_produtos(array,local){
+
+    while(local.firstChild){
+        local.removeChild(local.firstChild);
+    }
+
     for(let element of array){
         let produto_var = new Produto(element.Nome,element.Preço,element.Descrição,element.Imagem,local)
         produto_var.criar_card
@@ -33,4 +41,12 @@ function pedir_produto(quantia,local){
 }
 
 //teste, o primeiro paramentro é a quantia, o segundo onde os itens vão ficar
-pedir_produto(9,voce_pode_gostar_conteiner)
+
+window.addEventListener("load", ()=>{
+    pedir_produto(autal,voce_pode_gostar_conteiner)
+})
+
+more.addEventListener('click',()=>{
+    autal = autal + 3
+    pedir_produto(autal,voce_pode_gostar_conteiner)
+})

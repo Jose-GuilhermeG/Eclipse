@@ -6,13 +6,18 @@ from rest_framework import serializers
 from .models import Produtos,Promoção,Categorias
 
 class PromoçãoSerializers(ModelSerializer):
+    estado = serializers.CharField(source = 'get_Estado_display', read_only = True)
     class Meta:
         model = Promoção
-        fields = ("Desconto", "Estado")
+        fields = ["Desconto", "estado",'Acaba']
 
 class ProdutosSerializers(ModelSerializer):
-    promoção = PromoçãoSerializers(many = True,read_only=True)
+    promoções = serializers.SerializerMethodField()
     categoria = serializers.CharField(source='get_Categoria_display', read_only=True)
     class Meta:
         model = Produtos
-        fields = ['id','Nome','Preço','Descrição','Imagem','categoria','promoção']
+        fields = ['id','Nome','Preço','Descrição','Imagem','categoria','promoções']
+        
+    def get_promoções(self,obj):
+        promoções = Promoção.objects.filter(Produto = obj)
+        return PromoçãoSerializers(promoções,many = True).data

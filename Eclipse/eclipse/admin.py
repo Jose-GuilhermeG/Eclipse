@@ -11,7 +11,7 @@ class ProdutoCorAdmin(admin.ModelAdmin):
     list_display = ['Produto','Cor']
     
 class PromoçãoAdmin(admin.ModelAdmin):
-    list_display = ["Produto","Desconto",'Estado']
+    list_display = ["Produto","Desconto",'Acaba','Estado']
 
 
 # Register your models here.

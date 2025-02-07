@@ -11,12 +11,13 @@
 
 .produto{
     width: 20%;
-    height: 50vh;
+    height: 55vh;
     background-color: var(--branco_opaco);
     margin: 5% ;
     text-align: center;
     cursor: pointer;
     position: relative;
+    padding: 10px;
 }
 
 .produto_imagem{
@@ -25,9 +26,26 @@
     object-fit: contain;
 }
 
+.nome_produto{
+    margin-top: 0;
+    font-size: clamp(1em, 1em + 1vw, 1.5em);
+}
+
 .produto_preço{
     font-size: 15px;
     margin-top: 5px;
+}
+
+.antigo_preço{
+    text-decoration: line-through ;
+    margin-bottom: 15px;
+}
+
+.desconto{
+    background-color: var(--vermelho);
+    color: white;
+    padding: 5px 40px;
+    font-weight: 700;
 }
 
 .produto_button{
@@ -35,8 +53,7 @@
     height: 10%;
     color: white;
     border: none;
-    position: absolute;
-    bottom: 5%;
+    margin-top: 15px;
     background-color: var(--azul);
     left: 10%;
 }
