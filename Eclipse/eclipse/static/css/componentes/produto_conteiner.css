@@ -28,7 +28,7 @@
 
 .nome_produto{
     margin-top: 0;
-    font-size: clamp(1em, 1em + 1vw, 1.5em);
+    font-size: clamp(0.5em, 1em + 1vw, 1.5em);
 }
 
 .produto_preço{
@@ -37,6 +37,7 @@
 }
 
 .antigo_preço{
+    font-size: clamp(5px,5px + 1vw,15px);
     text-decoration: line-through ;
     margin-bottom: 15px;
 }

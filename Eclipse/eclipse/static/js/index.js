@@ -7,6 +7,8 @@ let autal = 6
 
 const voce_pode_gostar_conteiner  = document.getElementById("voce_pode_gostar");
 
+let section = Array.from(document.getElementsByTagName("section"));
+
 function criar_produtos(array,local){
 
     while(local.firstChild){
@@ -14,7 +16,7 @@ function criar_produtos(array,local){
     }
 
     for(let element of array){
-        let produto_var = new Produto(element.Nome,element.Preço,element.Descrição,element.Imagem,local)
+        let produto_var = new Produto(element.Nome,element.Preço,element.Descrição,element.Imagem,element.promoções,local)
         produto_var.criar_card
     }
 }
