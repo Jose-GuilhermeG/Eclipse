@@ -218,3 +218,14 @@ section{
     background-color: var(--azul);
     left: 10%;
 }
+
+#more{
+    margin-left: 42.5%;
+    width: 15%;
+    background-color: var(--cinza);
+    padding: 5px;
+    color: white;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}

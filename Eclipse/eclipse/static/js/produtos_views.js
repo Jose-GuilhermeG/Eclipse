@@ -29,3 +29,22 @@ async function Add_carrinho(){
 carrinho_button.addEventListener("click",()=>{
     Add_carrinho()
 })
+
+const cores = Array.from(document.getElementsByClassName('cor_disponivel'))
+
+function separar_valoress_array(array,parametro){
+    let lista = []
+    for(let item of array){
+        if(item && item[0] == parametro){
+            lista.push(item)
+        }
+    }
+    return lista
+}
+
+
+cores.forEach((element,index)=>{
+    let element_valores_cores = separar_valoress_array(element.textContent.split(' '),'#')
+    element.style.backgroundColor = element_valores_cores[index]
+    element.textContent = ''
+})

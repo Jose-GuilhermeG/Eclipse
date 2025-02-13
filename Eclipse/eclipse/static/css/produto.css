@@ -95,3 +95,17 @@ aside > button{
 .azul{
     background-color: var(--azul);
 }
+
+.cor_disponivel{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border: 2px solid black;
+    cursor: pointer;
+    margin-top: 5%;
+}
+
+#descrição{
+    margin-left: 25%;
+    width: 50%;
+}

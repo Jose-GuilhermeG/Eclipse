@@ -57,3 +57,12 @@ class ProdutosCategoriasView(View):
             return render(request, "categorias.html",context=context)
         except AttributeError:
             return HttpResponseNotFound()
+        
+class ProdutoExpecificoApi(APIView):
+    def get(self,request,nome):
+        try:
+            produto = Produtos.objects.get(Nome = nome)
+            response = Response(ProdutosSerializers(produto).data)
+            return response
+        except Produtos.DoesNotExist:
+            return HttpResponseNotFound()
