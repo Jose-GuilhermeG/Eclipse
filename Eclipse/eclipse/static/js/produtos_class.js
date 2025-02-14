@@ -57,7 +57,7 @@ class Produto{
                 if(promo.estado == 'Valido'){
                     let desconto_card = document.createElement("span");
                     desconto_card.className = 'desconto'
-                    let valor = (this.Preço * promo.Desconto)/100
+                    let valor = this.Preço - ((this.Preço * promo.Desconto)/100)
                     desconto_card.textContent = 'R$' + valor
                     return desconto_card
                 }

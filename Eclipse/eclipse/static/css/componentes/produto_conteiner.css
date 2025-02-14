@@ -29,6 +29,7 @@
 .nome_produto{
     margin-top: 0;
     font-size: clamp(0.5em, 1em + 1vw, 1.5em);
+    text-transform: capitalize;
 }
 
 .produto_preço{

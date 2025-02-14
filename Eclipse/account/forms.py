@@ -15,3 +15,12 @@ class LoginForm(UserMixin):
     
 class CadastrarForm(UserMixin):
     Nome = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Nome",'class' : 'input'}))
+
+class EndereçoForms(forms.Form):
+    Cep = forms.CharField(max_length=9)
+    Cidade = forms.CharField()
+    Rua = forms.IntegerField()
+    Enderoço = forms.CharField()
+    Complemento = forms.CharField(widget=forms.TextInput())
+    Referencia = forms.CharField()
+    Telefone = forms.IntegerField()

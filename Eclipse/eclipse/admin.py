@@ -3,6 +3,9 @@ from django.contrib import admin
 #imports
 from .models import Produtos,Produto_Cor,Promoção
 
+#forms import
+from .forms import ProdutoPromoçãoForm
+
 #models admin
 class ProdutosAdmin(admin.ModelAdmin):
     list_display = ['id','Nome','Preço']
@@ -14,6 +17,7 @@ class ProdutoCorAdmin(admin.ModelAdmin):
     search_fields = ['Produto','Cor']
     
 class PromoçãoAdmin(admin.ModelAdmin):
+    form = ProdutoPromoçãoForm
     list_display = ["Produto","Desconto",'Acaba','Estado']
     search_fields = ['Produto','Estado']
 
