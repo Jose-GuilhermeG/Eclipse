@@ -11,40 +11,32 @@
 </head>
 <body>
     {%include 'componentes/nav_bar.html'%}
-    <aside>
-        <div id="display">
-             {%if carrinho%}
-        <ul id="produtos_itens">
-            {%for item in carrinho%}
-            <li>
-                <span class="nome_produto">
-                    {{item.Produtos.Nome}}
-                </span>
-                <span class="preço_produto">
-                    {{item.Quantia}} X {{item.Produtos.Preço}}
-                </span>
-            </li>
-            {%endfor%}
-            total : {{Valor_total}}
-        </ul>
-
-        <button id="comprar">
-            comprar
-        </button>
-
-    {%else%}
-    <h1 class="aviso">
-        Não ha nenhum produto no carrinho
-    </h1>
-    <h2>
-        total : 0
-    </h2>
-      
-    {%endif%}
-        </div>
-   
-    </aside>
     <main>
+        <aside>
+            {%if carrinho%}
+                <ul>
+                    {%for item in carrinho%}
+                        <li>
+                            {{item.Produtos.Nome}}
+                            <br>
+                            <span>
+                                {{item.Quantia}} X {{item.Produtos.Preço}}
+                            </span>
+                        </li>
+                    {%endfor%}
+                    <li>
+                        total : {{Valor_total}}
+                    </li>
+                </ul>
+                <button id="comprar">
+                    Comprar
+                </button>
+            {%else%}
+                <h1>
+                    Nenhum item no carrinho
+                </h1>
+            {%endif%}
+        </aside>
         <section>
             {%if carrinho%}
                 {%for item in carrinho%}

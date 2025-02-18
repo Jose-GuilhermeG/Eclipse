@@ -42,7 +42,7 @@ class Estado(models.TextChoices):
     VALIDO = 'V' , 'Valido'
     
 class Promoção(models.Model):
-    Produto = models.ForeignKey(Produtos,on_delete=models.CASCADE)
+    Produto = models.ForeignKey(Produtos,on_delete=models.CASCADE,related_name='Promoção')
     Desconto = models.FloatField(null=False,default=0)
     Criada = models.DateTimeField(auto_now_add=True)
     Acaba = models.DurationField()

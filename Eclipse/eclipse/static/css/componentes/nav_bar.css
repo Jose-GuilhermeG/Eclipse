@@ -107,7 +107,7 @@ header{
     left: 5%;
     top: 13%;
     background-color: var(--branco_opaco);
-    z-index: 1;
+    z-index: 2;
 
         ul{
             width: 100%;
@@ -134,20 +134,71 @@ header{
 #produtos_pesquisa_local{
     width: 70%;
     height: 30%;
-    margin: auto;
+    left: 15%;
     display: none;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     background-color: #F1F1F1;
     overflow-y: scroll;
-    z-index: 2;
+    z-index: 3;
+    position: absolute;
+}
+
+#produtos_pesquisa_local > h1{
+    background-color: #F1F1F1;
+    margin-top: 10%;
+    z-index: 4;
 }
 
 .conteiner_pesquisa{
     width: 80%;
     height: 40%;
     display:flex;
-    
+    z-index: 4;
+    background-color: #F1F1F1;
 }
 
+
+@media (max-width:980px){
+    header{
+        height: 10%;
+    }
+    #menu{
+        margin-left: 5%;
+    }
+    #logo_link{
+        width: 10%;
+        height: 15%;
+        margin-left: 15%;
+    }
+
+    #user_nav_bar{
+        display: none;
+    }
+
+    #pesquisar_area{
+        width: 40%;
+        height: 30%;
+        margin-left: 15%;
+    }
+
+    #pesquisa{
+        height: 100%;
+        border-radius: 25px;
+    }
+
+    #page_pagina{
+        top: 9%;
+        height: 5%;
+        ul{
+            li{
+                a{
+                    font-size: clamp(0.2em , 0.2em + 1vh , 1em);
+                }
+            }
+        }
+    }
+
+
+}

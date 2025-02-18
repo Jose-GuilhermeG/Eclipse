@@ -1,4 +1,5 @@
 import Produto from "./produtos_class.js";
+import Load from "./load.js"
 
 const url = '/'
 
@@ -6,6 +7,9 @@ let more = document.getElementById('more')
 let autal = 6
 
 const voce_pode_gostar_conteiner  = document.getElementById("voce_pode_gostar");
+const promoçoes_dia  = document.getElementById("promoçoes_dia");
+
+
 
 let section = Array.from(document.getElementsByTagName("section"));
 
@@ -22,7 +26,9 @@ function criar_produtos(array,local){
 }
 
 async function fetch_url(url,local){
+    const load  = new Load(local)
     try{
+        load.criar
         let result = await fetch(url)
         if(!result.ok){
             throw new Error("err : " + result.statusText);
@@ -37,8 +43,13 @@ async function fetch_url(url,local){
 }
 
 
-function pedir_produto(quantia,local){
-    let url_quantia = url + `produtos/quantia/${quantia}`
+async function pedir_produto(quantia,local,filter){
+    if(filter){
+        let url_quantia = url + `produtos/?quantia=${quantia}&${filter}`
+        return fetch_url(url_quantia,local)
+
+    }
+    let url_quantia = url + `produtos/?quantia=${quantia}`
     return fetch_url(url_quantia,local)
 }
 
@@ -46,6 +57,7 @@ function pedir_produto(quantia,local){
 
 window.addEventListener("load", ()=>{
     pedir_produto(autal,voce_pode_gostar_conteiner)
+    pedir_produto(autal,promoçoes_dia,'promoção_hj=True')
 })
 
 more.addEventListener('click',()=>{

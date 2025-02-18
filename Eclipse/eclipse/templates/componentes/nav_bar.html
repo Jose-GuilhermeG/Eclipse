@@ -42,7 +42,7 @@
 <nav id="page_pagina">
     <ul>
         <li>
-            <a href="">
+            <a href="/#promoçoes_dia">
                 ofertas do dia
             </a>
         </li>
@@ -76,7 +76,7 @@
 <script>
     const input_pesquisa = document.getElementById("pesquisa")
     const produtos_pesquisa_local = document.getElementById("produtos_pesquisa_local")
-    const url = '/pesquisa/'
+    const url = '/pesquisa/?pesquisa='
 
 // Cria um elemento de produto com imagem, nome e preço
     function criar_itens(Img,Nome,Preço){
@@ -144,6 +144,12 @@
     input_pesquisa.addEventListener('input',async ()=>{
         produtos_pesquisa_local.style.display = 'flex'
         mostrar_itens(await realizar_pesquisa(input_pesquisa.value))
+    })
+
+    input_pesquisa.addEventListener('keypress',(e)=>{
+        if(e.key == 'Enter'){
+            window.location = `/pesquisa/${input_pesquisa.value}`
+        }
     })
     
     document.body.addEventListener('click',()=>{

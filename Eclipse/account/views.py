@@ -78,33 +78,43 @@ class UserRegister(APIView):
         return redirect("user")
 
 def Carrinho_view(request):
-    user = pegar_user_jwt(request)
-    context = {'user' : user}
-    if user == None:
-        context['carrinho'] = request.session.get('carrinho',None)
-    else:
-        carrinho = Carriho.objects.filter(User = user).all()
-        context['carrinho'] = carrinho
-        total = 0
-        for item in carrinho:
-            total += item.Produtos.Preço * item.Quantia
-        context["Valor_total"] = total
-            
-    response = render(request, "carrinho.html",context=context)
-    return response
+    if request.method == "GET":
+        user = pegar_user_jwt(request)
+        context = {'user' : user}
+        if user == None:
+            context['carrinho'] = request.session.get('carrinho',None)
+        else:
+            carrinho = Carriho.objects.filter(User = user).all()
+            context['carrinho'] = carrinho
+            total = 0
+            for item in carrinho:
+                total += item.Produtos.Preço * item.Quantia
+            context["Valor_total"] = total
+                
+        response = render(request, "carrinho.html",context=context)
+        return response
 
 class Perfil(View):
     def get(self,request):
         return render(request, "perfil.html",)
     
 #falta o tratamento de erro
-class Carrinho_add(APIView):
+class Carrinho(APIView):
+    def get(self, request):
+        return redirect('carrinho')
     def post(self,request):
         user = pegar_user_jwt(request)
         quantia = request.data.get('quantia')
         produto = request.data.get('produto')
         produto = Produtos.objects.filter(Nome__icontains = produto).first()
         if user != None:
-            carrinho_novo = Carriho(User = user,Produtos = produto,Quantia =quantia)
-            carrinho_novo.save()
+            ja_tem = Carriho.objects.filter(User = user,Produtos = produto).first()
+            if ja_tem:
+                produto_carrinho = Carriho.objects.get(id = ja_tem.id)
+                print(produto_carrinho.Quantia)
+                produto_carrinho.Quantia = produto_carrinho.Quantia + 1
+                produto_carrinho.save()
+            else:  
+                carrinho_novo = Carriho(User = user,Produtos = produto,Quantia =quantia)
+                carrinho_novo.save()
         return Response({},status=status.HTTP_200_OK)

@@ -6,8 +6,18 @@ from .models import Produtos,Produto_Cor,Promoção
 #forms import
 from .forms import ProdutoPromoçãoForm
 
+#inlinesmodels
+class ProdutosCoresInline(admin.TabularInline):
+    model = Produto_Cor
+    extra = 1
+    
+class PromoçoesInline(admin.TabularInline):
+    model = Promoção
+    extra = 1
+
 #models admin
 class ProdutosAdmin(admin.ModelAdmin):
+    inlines = [ProdutosCoresInline,PromoçoesInline]
     list_display = ['id','Nome','Preço']
     search_fields = ['Nome']
     list_filter = ['Nome','Preço']

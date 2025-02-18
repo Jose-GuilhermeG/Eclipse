@@ -27,3 +27,26 @@ body,html{
     --azul : #18AEE0 ;
     --vermelho : #E03F69 ;
 }
+
+/*load*/
+.load{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background:none ;
+    border: #303A3E 15px solid;
+    border-top-color: var(--azul);
+    position: relative;
+    animation: load_animation 1s infinite cubic-bezier(0.5, 0.1, 0.5, 0.5);
+    margin: 5%;
+}
+
+@keyframes load_animation{
+    0%{
+        transform: rotate(0);
+    }
+
+    100%{
+        transform: rotate(360deg);
+    }
+}

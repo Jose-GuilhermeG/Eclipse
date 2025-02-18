@@ -30,15 +30,34 @@ class ProdutosView(View):
             return render(request, "produto.html",context=context)
         except Produtos.DoesNotExist:
             return HttpResponseNotFound()
-    
+
+from time import sleep
+
 class ProdutosAllApi(APIView):
-    def get(self, request,quantia) :
-        produtos_quantia = Produtos.objects.all()[:quantia]
+    def get(self, request) :
+        quantia = request.GET.get('quantia',100)
+        nome_filter = request.GET.get("nome",False)
+        promoção_hj = request.GET.get("promoção_hj",False)
+        
+        if nome_filter:
+            produtos = Produtos.objects.filter(Nome__icontains = nome_filter)
+        elif promoção_hj:
+            produtos = Promoção.objects.all()
+            s = []
+            for item in produtos:
+                print(item.Produto)
+                s.append(ProdutosSerializers(Produtos.objects.get(Nome = item.Produto)).data)
+            return Response(s)
+            
+        else:
+            produtos = Produtos.objects.all()
+        produtos_quantia = produtos[:int(quantia)]
         produtosSerializers_var = ProdutosSerializers(produtos_quantia, many = True)
         return Response(produtosSerializers_var.data)
 
 @api_view(['GET'])
-def Pesquisa_produto(request,pesquisa):
+def Pesquisa_produto(request):
+        pesquisa = request.GET.get("pesquisa",False)
         produtos_encontrados = Produtos.objects.filter(Nome__icontains = pesquisa).all()
         if produtos_encontrados:
             produto_result = ProdutosSerializers(produtos_encontrados,many = True)
@@ -47,6 +66,12 @@ def Pesquisa_produto(request,pesquisa):
             return response
         
         return Response('nenhum produto encontrado',status = status.HTTP_204_NO_CONTENT)
+
+class Pesquisa_produto_view(View):
+    def get(self,request,pesquisa):
+        produtos = Produtos.objects.filter(Nome__icontains = pesquisa).all()
+        context = {'produtos' : produtos}
+        return render(request,'pesquisa_page.html',context=context)
     
 class ProdutosCategoriasView(View):
     def get(self, request,categoria):

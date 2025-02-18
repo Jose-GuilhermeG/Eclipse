@@ -2,6 +2,7 @@ const url = '/user/carrinho/add'
 const produto = document.getElementById('nome').innerText
 let carrinho_button = document.getElementById("carrinho_button")
 
+
 async function Add_carrinho(){
     let corpo = {
         "method": "POST",
