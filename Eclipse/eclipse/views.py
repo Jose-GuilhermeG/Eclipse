@@ -38,9 +38,15 @@ class ProdutosAllApi(APIView):
         quantia = request.GET.get('quantia',100)
         nome_filter = request.GET.get("nome",False)
         promoção_hj = request.GET.get("promoção_hj",False)
+        id_pedido = request.GET.get("id",False)
+        
+        many = True
         
         if nome_filter:
             produtos = Produtos.objects.filter(Nome__icontains = nome_filter)
+        elif id_pedido:
+            produtos = Produtos.objects.get(id=id_pedido)
+            many = False
         elif promoção_hj:
             produtos = Promoção.objects.all()
             s = []
@@ -51,8 +57,12 @@ class ProdutosAllApi(APIView):
             
         else:
             produtos = Produtos.objects.all()
-        produtos_quantia = produtos[:int(quantia)]
-        produtosSerializers_var = ProdutosSerializers(produtos_quantia, many = True)
+            
+        if many:
+            produtos_quantia = produtos[:int(quantia)]
+        else:
+            produtos_quantia = produtos
+        produtosSerializers_var = ProdutosSerializers(produtos_quantia, many = many)
         return Response(produtosSerializers_var.data)
 
 @api_view(['GET'])
@@ -83,11 +93,3 @@ class ProdutosCategoriasView(View):
         except AttributeError:
             return HttpResponseNotFound()
         
-class ProdutoExpecificoApi(APIView):
-    def get(self,request,nome):
-        try:
-            produto = Produtos.objects.get(Nome = nome)
-            response = Response(ProdutosSerializers(produto).data)
-            return response
-        except Produtos.DoesNotExist:
-            return HttpResponseNotFound()

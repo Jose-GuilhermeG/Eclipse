@@ -1,5 +1,9 @@
+import Get_requisição from "./get.js"
+
 const url = '/user/carrinho/add'
 const produto = document.getElementById('nome').innerText
+const imagem_produto = document.getElementById("produto_imagem")
+const padrão = imagem_produto.src
 let carrinho_button = document.getElementById("carrinho_button")
 
 
@@ -31,21 +35,31 @@ carrinho_button.addEventListener("click",()=>{
     Add_carrinho()
 })
 
-const cores = Array.from(document.getElementsByClassName('cor_disponivel'))
+const lista_cores = document.getElementById("lista_cores")
 
-function separar_valoress_array(array,parametro){
-    let lista = []
-    for(let item of array){
-        if(item && item[0] == parametro){
-            lista.push(item)
-        }
+let produto_nome = window.location.href
+produto_nome = produto_nome.split('/')
+produto_nome = produto_nome[produto_nome.length-1]
+
+
+const req = new Get_requisição('/produtos',[`nome=${produto_nome}`])
+const result_req= await req.result() 
+if(result_req[0].cores.length != 0){
+    result_req.forEach(element => {
+    for(let cor of element.cores){
+        let cor_element = document.createElement('div')
+        cor_element.className = "cor_disponivel"
+        cor_element.style.backgroundColor = cor.Cor_code
+        cor_element.addEventListener('click',()=>{
+            imagem_produto.src = cor.Imagem
+        })
+        lista_cores.appendChild(cor_element)
+
     }
-    return lista
+});
 }
-
-
-cores.forEach((element,index)=>{
-    let element_valores_cores = separar_valoress_array(element.textContent.split(' '),'#')
-    element.style.backgroundColor = element_valores_cores[index]
-    element.textContent = ''
-})
+else{
+    let cor_element = document.createElement("h1")
+    cor_element.textContent = 'Mais Nenhuma cor disponivel '
+    lista_cores.appendChild(cor_element)
+}

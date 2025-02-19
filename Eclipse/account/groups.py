@@ -1,3 +1,5 @@
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import Group,Permission
 
-user_comun,criado = Group.objects.get_or_create('Usuarios Comun')
+user_comun = Group.objects.get('Usuarios Comun')
+
+#permissões

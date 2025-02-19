@@ -13,6 +13,9 @@ class Produto{
         this.card = document.createElement("div");
         this.img_card = document.createElement("img");
         this.Nome_card = document.createElement("h1");
+        if(this.Nome.length > 18){
+            this.Nome_card.style.fontSize = '1.2em'
+        }
         this.Preço_card = document.createElement("h2");
         this.button_comprar = document.createElement("button");
         this.desconto_card = this.criar_desconto_card;

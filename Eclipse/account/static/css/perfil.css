@@ -1,0 +1,42 @@
+@import url('/static/css/global.css');
+
+main{
+    height: 100vh;
+}
+
+section{
+    height: 50%;
+}
+
+.conteiner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.button{
+    background-color: var(--branco_opaco);
+    height: 100px;
+    width: 20%;
+    margin: 0 5% 0 5%;
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+
+    div{
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.icone_button{
+    height: 70px;
+    width: 50px;
+    object-fit: contain;
+    margin-right: 5%;
+}
+
+.text_button{
+    color: black;
+}

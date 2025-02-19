@@ -18,6 +18,10 @@ body,html{
     background-color: white;
 }
 
+body{
+    height: auto;
+}
+
 /*variaveis*/
 
 :root{

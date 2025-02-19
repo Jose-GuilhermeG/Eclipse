@@ -2,11 +2,11 @@
 
 main{
     width: 100%;
-    height: 100%;
+    height: auto
 }
 
-section{
-    height: 100%;
+.flex{
+    height: 100vh;
     display: flex;
 }
 
@@ -61,7 +61,7 @@ section{
     align-items: center;
 }
 
-aside{
+section > aside{
     height: 70%;
     width: 20% ;
     position: sticky;
@@ -69,9 +69,9 @@ aside{
     margin: 5% 0 0 2.5%;
     border: 2px solid black;
     
-}
 
-aside > button{
+
+ button{
     width: 90%;
     height: 10%;
     color: white;
@@ -83,9 +83,12 @@ aside > button{
     margin: 5% 0 0 5%;
 }
 
+}
+
 #descrição{
-    position: absolute;
-    bottom: 0;
+    width: 50%;
+    text-indent: 5px;
+    margin-left: 5%;
 }
 
 .cinza{
@@ -105,7 +108,3 @@ aside > button{
     margin-top: 5%;
 }
 
-#descrição{
-    margin-left: 25%;
-    width: 50%;
-}

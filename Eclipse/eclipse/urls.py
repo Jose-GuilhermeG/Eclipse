@@ -8,7 +8,6 @@ from .views import Index,ProdutosAllApi,ProdutosView,Pesquisa_produto,ProdutosCa
 urlpatterns = [
     path('',Index, name="index"),
     path('produtos/',ProdutosAllApi.as_view(), name="produtos_all"),
-    path('produtos/detalhes/<str:nome>',ProdutoExpecificoApi.as_view(), name="produto_expecifico"),
     path('produtos/<str:nome>',ProdutosView.as_view(), name="produto"),
     path('pesquisa/',Pesquisa_produto,name='pesquisa'),
     path('pesquisa/<pesquisa>',Pesquisa_produto_view.as_view(),name='pesquisa_view'),

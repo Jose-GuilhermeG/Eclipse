@@ -12,8 +12,9 @@
 <body>
     {%include 'componentes/nav_bar.html'%}
     <main>
-        <section>
+        <section class='flex'>
             <!--pode adicionar classes ou id para usar o css-->
+            
             <div id="imagem_produto_view">
                 <img src="{{produto.Imagem.url}}" alt="" id = 'produto_imagem'>
             </div>
@@ -29,22 +30,7 @@
                     cor
                 </h3>
                 <ul id="lista_cores">
-                    {%if cores%}
-                    {% for cor in cores  %}
-                        <li>
-                            <span>
-                                {{cor.Cor}}
-                            </span>
-                            <div class = 'cor_disponivel'>
-                                {{cor.Cor_code}}
-                            </div>
-                        </li>
-                    {% endfor %}
-                    {% else %}
-                        <h1>
-                            sem mais cores disponiveis
-                        </h1>
-                    {%endif%}
+
                 </ul>
                 
             </div>
@@ -57,12 +43,13 @@
                 </button>
             </aside>
             
+            
+        </section>
+        <section>
+            <h1>Descrição</h1>
             <p id="descrição">
                 {{produto.Descrição}}
             </p>
-
-        </section>
-        <section>
 
         </section>
     </main>

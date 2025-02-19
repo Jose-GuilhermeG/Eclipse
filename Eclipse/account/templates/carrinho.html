@@ -11,7 +11,7 @@
 </head>
 <body>
     {%include 'componentes/nav_bar.html'%}
-    <main>
+    <div class='absolute'>
         <aside>
             {%if carrinho%}
                 <ul>
@@ -32,11 +32,13 @@
                     Comprar
                 </button>
             {%else%}
-                <h1>
+                <h1 class='aviso'>
                     Nenhum item no carrinho
                 </h1>
             {%endif%}
         </aside>
+    </div>
+    <main>
         <section>
             {%if carrinho%}
                 {%for item in carrinho%}

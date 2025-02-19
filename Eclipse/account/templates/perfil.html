@@ -9,6 +9,42 @@
     <link rel="stylesheet" href="{%static 'css/perfil.css'%}">
 </head>
 <body>
-    
+    {% include "componentes/nav_bar.html" %}
+    <main>
+        <section class="conteiner">
+            <a href="" class="button">
+                <div class="conteiner">
+                    <img src="{%static 'img/icones/user.png'%}" alt="" class="icone_button">
+                    <h1 class="text_button">
+                        Meus dados
+                    </h1>
+                </div>
+            </a>
+            <a href="" class="button">
+                <div class="conteiner">
+                    <img src="{%static 'img/icones/endereço.png'%}" alt="" class="icone_button">
+                    <h1 class="text_button">
+                        Meus endereços
+                    </h1>
+                </div>
+            </a>
+            <a href="" class="button">
+                <div class="conteiner">
+                    <img src="{%static 'img/icones/pedidos.png'%}" alt="" class="icone_button">
+                    <h1 class="text_button">
+                        Meus pedidos
+                    </h1>
+                </div>
+            </a>
+        </section>
+        <section>
+            <h1>
+                ultimos pedidos
+            </h1>
+            <div id="pedidos">
+                
+            </div>
+        </section>
+    </main>
 </body>
 </html>
