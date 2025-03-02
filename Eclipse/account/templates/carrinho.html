@@ -4,16 +4,15 @@
     {%load static%}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link rel="shortcut icon" href="{%static 'img/favicon/favicon.ico'%}" type="image/x-icon">
-    <!--temporario-->
+    <title>Eclipse</title>
     <link rel="stylesheet" href="{%static 'css/carrinho.css'%}">
 </head>
 <body>
-    {%include 'componentes/nav_bar.html'%}
     <div class='absolute'>
         <aside>
             {%if carrinho%}
+            
                 <ul>
                     {%for item in carrinho%}
                         <li>
@@ -31,6 +30,24 @@
                 <button id="comprar">
                     Comprar
                 </button>
+            {%elif carrinho_local%}
+            <ul>
+                {%for item in carrinho_local%}
+                    <li>
+                        {{item.Nome}}
+                        <br>
+                        <span>
+                            1 X {{item.Preço}}
+                        </span>
+                    </li>
+                {%endfor%}
+                <li>
+                    total : {{Valor_total}}
+                </li>
+            </ul>
+            <button id="comprar">
+                Comprar
+            </button>
             {%else%}
                 <h1 class='aviso'>
                     Nenhum item no carrinho
@@ -38,12 +55,24 @@
             {%endif%}
         </aside>
     </div>
+    {%include 'componentes/nav_bar.html'%}
     <main>
         <section>
             {%if carrinho%}
                 {%for item in carrinho%}
                    {%include 'componentes/carrinho_produtos.html'%}
                 {%endfor%}
+            {%elif carrinho_local%}
+                {% for produto in carrinho_local %}
+                    <div class = 'produto'>
+                        <a href = '/produtos/{{produto.Nome}}'>
+                            <img src="{{produto.Imagem.url}}" alt="" class = 'produto_imagem'>
+                        </a>
+                        <h1>
+                            {{produto.Nome}}
+                        </h1>
+                </div>
+                {% endfor %}
             {%else%}
                 <h1 class="aviso">
                     Não ha nenhum produto no carrinho

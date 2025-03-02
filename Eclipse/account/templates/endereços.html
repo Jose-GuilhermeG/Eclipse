@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%load static%}
+    <link rel="shortcut icon" href="{%static 'img/favicon/favicon.ico'%}" type="image/x-icon">
+    <title>Eclipse</title>
+    <link rel="stylesheet" href="{%static 'css/endereço.css'%}">
+</head>
+<body>
+    {%include 'componentes/nav_bar_perfil.html'%}
+    <main>
+        <section id="conteiner_endereços">
+            {%if endereços%}
+                {% for endereço in endereços %}
+                    <h1 class='endereço_view'>
+                        {{endereço.Cidade}} - {{endereço.Rua}}
+                    </h1>
+                {% endfor %}
+            {% else %}
+                <h1>
+                    não ha nenhum endereço
+                </h1>
+                {%endif%}
+                <a href="{%url 'endereço_form'%}" id="link_endereco">
+                    Novo endereço +
+                </a>
+        </section>
+   
+    </main>
+</body>
+</html>

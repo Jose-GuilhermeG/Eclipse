@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{%static 'img/favicon/favicon.ico'%}" type="image/x-icon">
-    <title>Document</title>
+    <title>Eclipse</title>
     <link rel="stylesheet" href="{%static 'css/produto.css'%}">
     <script type="module" src="{%static 'js/produtos_views.js'%}"></script>
 </head>
@@ -24,7 +24,12 @@
                 </h1>
                 <img src="{%static 'img/estrelas.png'%}" alt="" id="avaliação">
                 <h2 id="preço">
-                    R${{produto.Preço}}
+                    {%if produto.desconto is not None%}
+                        R${{produto.desconto}}
+                    {%else%}
+                        R${{produto.Preço}}
+
+                    {%endif%}
                 </h2>
                 <h3>
                     cor
@@ -35,6 +40,15 @@
                 
             </div>
             <aside>
+                <label for="quantia" id="label_quantidade">
+                    Quantidade
+                </label>
+                <select name="quantia" id="quantia">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
                 <button class="cinza" id="carrinho_button">
                     carrinho
                 </button>

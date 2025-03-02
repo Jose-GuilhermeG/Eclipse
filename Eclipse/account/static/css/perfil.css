@@ -8,6 +8,7 @@ section{
     height: 50%;
 }
 
+
 .conteiner{
     display: flex;
     justify-content: center;
@@ -39,4 +40,34 @@ section{
 
 .text_button{
     color: black;
+}
+
+
+.titulo{
+    margin-left: 10%;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    border-bottom: 2px solid black;
+    width: fit-content;
+}
+
+#pedidos{
+    width: 80%;
+    height: 60%;
+    background-color: var(--branco_opaco);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#aviso{
+    width: 100%;
+    text-align: center;
+    border-bottom: solid black 2px;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    font-weight: 600;
+    padding-bottom: 20px;
 }

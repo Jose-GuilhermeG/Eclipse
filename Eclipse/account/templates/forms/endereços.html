@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%load static%}
+    <link rel="shortcut icon" href="{%static 'img/favicon/favicon.ico'%}" type="image/x-icon">
+    <title>Eclipse</title>
+    <link rel="stylesheet" href="{%static 'css/endereços_form.css'%}">
+</head>
+<body>
+    <main>
+        <form action="{%url 'endereço_form'%}" method="post" id='conteiner_form'>
+            {% csrf_token %}
+            <div id="form">
+            <img src="{%static 'img/logo.png'%}" alt="" id="logo_form">
+            <h1 id="text">
+                Cadastro
+            </h1>
+                {{form.Cep}}
+                {{form.Cidade}}
+                {{form.Rua}}
+                {{form.Endereço}}
+                {{form.Complemento}}
+                {{form.Referencia}}
+                {{form.Telefone}}
+                <input type="submit" value="Cadastrar endereço" id='submit_endereços'>
+
+            </div>
+        </form>
+    </main>
+</body>
+</html>

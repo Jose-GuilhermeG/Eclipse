@@ -22,6 +22,7 @@ width: 20%;
 position: sticky;
 top: 15%;
 left: 80%;
+
 }
 
 aside{
@@ -58,4 +59,14 @@ aside{
             }
         }
     }
+}
+
+#comprar{
+    width: 80%;
+    height: 5%;
+    margin-left: 10%;
+    background-color: var(--branco_opaco);
+    border: none;
+    border-radius: 15px;
+
 }

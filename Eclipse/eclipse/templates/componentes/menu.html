@@ -1,0 +1,32 @@
+{%load static%}
+<link rel="stylesheet" href="{%static 'css/componentes/menu.css'%}">
+<script type='module' src='{%static "js/menu.js"%}'></script>
+
+<div id="menu_conteiner">
+    <div id="menu">
+    <form action="{%url 'filter'%}" method="get" id="form_nav_bar">
+        {%csrf_token%}
+        <h1>
+            Filtrando por
+        </h1>
+        <label for="">preço</label>
+        <select name="preço" id="preço_filtro" class="select_filtros">
+            <option value="Menor" class="filtro_optios">Menor preço</option>
+            <option value="Maior" class="filtro_optios">Maior preço</option>
+        </select>
+        <label for="">categoria</label>
+        <select name="categoria" id="categoria_filter" class="select_filtros">
+            <option value="G" class="filtro_optios">Gamer</option>
+            <option value="E" class="filtro_optios">Escritorio</option>
+            <option value="U" class="filtro_optios">Upgrade</option>
+        </select>
+
+        <input type="submit" value="filtrar" id="filtra_button">
+    </form>
+    {%if user is not None%}
+    <a href="{%url 'logout'%}" id="logout">
+        Sair
+    </a>
+    {%endif%}
+    </div>
+</div>

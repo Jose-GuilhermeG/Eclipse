@@ -4,15 +4,16 @@
     {%load static%}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="shortcut icon" href="{%static 'img/favicon/favicon.ico'%}" type="image/x-icon">
+    <title>Eclipse</title>
     <link rel="shortcut icon" href="{%static 'img/favicon/favicon.ico'%}" type="image/x-icon">
     <link rel="stylesheet" href="{%static 'css/perfil.css'%}">
 </head>
 <body>
-    {% include "componentes/nav_bar.html" %}
+    {% include "componentes/nav_bar_perfil.html" %}
     <main>
         <section class="conteiner">
-            <a href="" class="button">
+            <a href="{%url 'dados'%}" class="button">
                 <div class="conteiner">
                     <img src="{%static 'img/icones/user.png'%}" alt="" class="icone_button">
                     <h1 class="text_button">
@@ -20,7 +21,7 @@
                     </h1>
                 </div>
             </a>
-            <a href="" class="button">
+            <a href="{%url 'endereço_view'%}" class="button">
                 <div class="conteiner">
                     <img src="{%static 'img/icones/endereço.png'%}" alt="" class="icone_button">
                     <h1 class="text_button">
@@ -28,7 +29,7 @@
                     </h1>
                 </div>
             </a>
-            <a href="" class="button">
+            <a href="{%url 'pedidos'%}" class="button">
                 <div class="conteiner">
                     <img src="{%static 'img/icones/pedidos.png'%}" alt="" class="icone_button">
                     <h1 class="text_button">
@@ -38,11 +39,17 @@
             </a>
         </section>
         <section>
-            <h1>
+            <h1 class='titulo'>
                 ultimos pedidos
             </h1>
             <div id="pedidos">
-                
+                {%if pedidos_user%}
+                    {{pedidos_user}}
+                {%else%}
+                    <h1 id ='aviso'>
+                        Não ha nenhum pedido
+                    </h1>
+                {%endif%}
             </div>
         </section>
     </main>

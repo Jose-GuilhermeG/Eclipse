@@ -1,9 +1,9 @@
 #django imports
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views import View
 from django.http.response import HttpResponseNotFound
 from django.db.models import Q
-
+from django.views.generic import ListView
 #restframework imports
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
@@ -16,22 +16,23 @@ from .serializers import ProdutosSerializers,PromoçãoSerializers
 #models
 from .models import Produtos,Produto_Cor,Categorias,Promoção
 
+#jwt
+from account.utils.jwt import pegar_user_jwt
+
 # Create your views here.
 def Index(request):
-    return render(request, "index.html")
+    return render(request, "index.html",context={'user' : pegar_user_jwt(request)})
     
 class ProdutosView(View):
     def get(self,request,nome):
         try:
             produto_consult = Produtos.objects.get(Nome=nome)
-            print(produto_consult.desconto())
             cores_produtos = Produto_Cor.objects.filter(Produto = produto_consult).all()
             context = {'produto' : produto_consult,'cores' : cores_produtos}
             return render(request, "produto.html",context=context)
         except Produtos.DoesNotExist:
             return HttpResponseNotFound()
 
-from time import sleep
 
 class ProdutosAllApi(APIView):
     def get(self, request) :
@@ -51,7 +52,6 @@ class ProdutosAllApi(APIView):
             produtos = Promoção.objects.all()
             s = []
             for item in produtos:
-                print(item.Produto)
                 s.append(ProdutosSerializers(Produtos.objects.get(Nome = item.Produto)).data)
             return Response(s)
             
@@ -64,6 +64,29 @@ class ProdutosAllApi(APIView):
             produtos_quantia = produtos
         produtosSerializers_var = ProdutosSerializers(produtos_quantia, many = many)
         return Response(produtosSerializers_var.data)
+    
+class FilterProdutos(View):
+    def get(self,request):
+        categoria = request.GET.get("categoria")
+        preço = request.GET.get("preço")
+        produtos = Produtos.objects.filter(Categoria=categoria).all()
+        lista = []
+        for produto in produtos:
+            lista.append(produto)
+        if preço.upper() == 'MENOR':
+            for item in range(len(lista)):
+                for item in range(len(lista)):
+                    if item < len(lista) - 1 :
+                        if lista[item].Preço > lista[item+1].Preço:
+                            lista[item],lista[item+1] = lista[item+1],lista[item]
+        else:
+            for item in range(len(lista)):
+                for item in range(len(lista)):
+                    if item < len(lista) - 1 :
+                        if lista[item].Preço < lista[item+1].Preço:
+                            lista[item+1],lista[item] = lista[item],lista[item+1]
+                        
+        return render(request,'filter.html',context={"produtos":lista})
 
 @api_view(['GET'])
 def Pesquisa_produto(request):
@@ -93,3 +116,6 @@ class ProdutosCategoriasView(View):
         except AttributeError:
             return HttpResponseNotFound()
         
+class Sobre(View):
+    def get(self,request):
+        return render(request, "sobre.html")

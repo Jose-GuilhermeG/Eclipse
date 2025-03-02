@@ -5,6 +5,7 @@ const produto = document.getElementById('nome').innerText
 const imagem_produto = document.getElementById("produto_imagem")
 const padrão = imagem_produto.src
 let carrinho_button = document.getElementById("carrinho_button")
+const quantia_select = document.getElementById("quantia")
 
 
 async function Add_carrinho(){
@@ -15,7 +16,7 @@ async function Add_carrinho(){
         },
         "body": JSON.stringify({
             "produto": produto,
-            'quantia' : 1,
+            'quantia' : quantia_select.value,
         }),
     }
     try{

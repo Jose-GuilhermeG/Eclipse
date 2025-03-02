@@ -233,6 +233,11 @@ section{
     cursor: pointer;
 }
 
+footer{
+    height: 30vh;
+    background-image: url('/static/img/textura.png');
+}
+
 @media (max-width:980px){
     #banner{
         display: flex;
@@ -268,4 +273,51 @@ section{
    .categoria_nome{
     font-size: clamp(0.5em,1em + 1vh,2em);
    }
+}
+
+@media (max-width:1108px){
+    #imagem_banner{
+        position: absolute;
+        width: 30%;
+        right: 0;
+        top: 10%;
+       }
+    .categoria_nome{
+        font-size: 1rem;
+       }
+
+       .produto{
+           white-space: nowrap;
+            overflow: hidden;
+       }
+
+       .nome_produto{
+        text-overflow: ellipsis;
+    }
+}
+
+@media (max-width:550px){
+    #banner{
+        display: none;
+    }
+
+    #conteiner_categoria{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .categoria{
+        height: 100px;
+        width: 500px;
+        border-radius: 0;
+    }
+
+    .categoria_nome{
+        font-size: 1rem;
+    }
+
+    .titulo_produtos_conteiner{
+        font-size: 1rem;
+        border-bottom: 1px solid black;
+    }
 }

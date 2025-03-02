@@ -1,0 +1,87 @@
+@import url('/static/css/global.css');
+
+#menu_button{
+    width: 5%;
+    height: 40%;
+    margin-left: 2.5%;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#menu_conteiner{
+    width: 20%;
+    position: sticky;
+    top: 15vh;
+    z-index: 7;
+}
+
+#menu{
+    background-color: black;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    transform: translateX(-1000px);
+    transition: 0.5s ease-in-out normal;
+    animation: enter 0.2s ease-in-out forwards;
+    
+}
+
+#form_nav_bar{
+    margin-top: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.select_filtros{
+    width: 80%;
+    background: none;
+    color: white;
+    border: none;
+    text-align: center;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.filtro_optios{
+    color: black;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#filtra_button{
+    width: 80%;
+    height: 25px;
+    background-color: var(--azul);
+    margin-top: 5%;
+    padding: 2px;
+    color: white;
+    border: none;
+    border-radius: 15px;
+}
+
+#logout{
+    width: 80%;
+    height: 25px;
+    border-radius:15px ;
+    background-color: var(--vermelho);
+    padding: 5px;
+    color: white;
+    bottom: 50%;
+    position: absolute;
+    left: 10%;
+    text-align: center;
+    text-decoration: none;
+    line-height: 25px;
+}
+
+@keyframes enter{
+    100%{
+        transform: translateX(0);
+    }
+}
