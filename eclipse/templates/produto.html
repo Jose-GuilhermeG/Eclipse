@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section>
+        <div id="imagem_local">
+            <img src="{{produto.imagem.url}}" alt="{{produto.nome}} imagem">
+        </div>
+        <div id="info">
+            <h1 class="info_itens">
+                {{produto.nome}}
+            </h1>
+            <span class="info_itens">
+                {{produto.preço}}
+            </span>
+            {%if produto.descrição%}
+                {{produto.descrição|linebreaks}}
+            {%else%}
+                <h1>
+                    produto não tem descrição
+                </h1>
+            {%endif%}
+        </div>
+    </section>
+{% endblock  %}

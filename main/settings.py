@@ -131,3 +131,7 @@ STATICFILES_DIRS = [join(BASE_DIR,"eclipse/static"),join(BASE_DIR,'core/static')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#media configs
+MEDIA_URL = "/media/"
+MEDIA_ROOT = join(BASE_DIR,"media")

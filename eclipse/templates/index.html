@@ -1,8 +1,60 @@
 {% extends "base.html" %}
+{%load static%}
 
+{%block links%}
+    {{block.super}}
+    <link rel="stylesheet" href="{%static 'css/index.css'%}">
+{%endblock%}
 
-{{% block content %}
-    <p>
-        teste
-    </p>
-{% endblock  %}}
+{% block content %}
+    <section>
+        <div id="banner">
+            <div id="content">
+                <h1>
+                    {{produto_mes}}
+                </h1>
+                <p id="info">
+                    Mais informações e Produtos
+                </p>
+                <a>
+                    <button class="button_banner">Comprar</button>
+                </a>
+                <a href="{{produto_mes.get_absolute_url}}" >
+                    <button class="button_banner">Detalhes</button>
+                </a>
+            </div>
+            <img src="{{produto_mes.imagem.url}}" alt="imagem do produto do mes" id="imagem_banner">
+        </div>
+        <div id="categorias_conteiner">
+            <a href="">
+                <div class="categorias cinza">
+                    <img src="{%static 'img/categorias/gamer.png'%}" alt="" class="img_categoria ">
+                    <h1 class="nome_categoria">
+                        gamer
+                    </h1>
+                </div>
+            </a>
+            <a href="">
+                <div class="categorias azul">
+                    <img src="{%static 'img/categorias/escritorio.png'%}" alt="" class="img_categoria ">
+                    <h1 class="nome_categoria">
+                        notebookes e escritorio
+                    </h1>
+                </div>
+            </a>
+            <a href="">
+                <div class="categorias vermelho">
+                    <img src="{%static 'img/categorias/upgrade.png'%}" alt="" class="img_categoria ">
+                    <h1 class="nome_categoria">
+                        upgrades
+                    </h1>
+                </div>
+            </a>
+        </div>
+    </section>
+    <section>
+        {%block produtos%}
+
+        {%endblock produtos%}
+    </section>
+{% endblock  %}

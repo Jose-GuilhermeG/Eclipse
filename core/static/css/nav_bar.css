@@ -5,6 +5,9 @@ header{
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 #menu_button{
@@ -72,4 +75,23 @@ header{
 #user_nav_bar>ul>li{
     aspect-ratio: 10/5;
     width: 20%;
+}
+
+@media (max-width:900px){
+    #user_nav_bar{
+        display: none;
+    }
+
+    #pesquisar_area{
+        width: 70%;
+    }
+}
+
+@media (max-width:800px) {
+    #logo_link{
+        display: none;
+    }
+    header{
+        position: relative;
+    }
 }

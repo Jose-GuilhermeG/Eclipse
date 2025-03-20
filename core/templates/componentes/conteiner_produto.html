@@ -1,0 +1,12 @@
+<div class="produtos">
+    <a href="{{produto.get_absolute_url}}"><img src="{{produto.imagem.url}}" alt="{{produto}} imagem" class="imagem_produto"></a>
+    <h1 class="nome_produto">
+        {{produto}}
+    </h1>
+    <span class="preco">
+       R$ {{produto.preço}} 
+    </span>
+    <button class="comprar">
+        Comprar
+    </button>
+</div>

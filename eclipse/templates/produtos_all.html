@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{%block content%}
+    <section>
+        {%for produto in produtos%}
+            {%include 'componentes/conteiner_produto.html'%}
+        {%endfor%}
+    </section>
+    <section class='center-flex'>
+        {% if page_obj.has_previous %}
+            <a href = "{%url 'eclipse:produtos_all'%}?page={{page_obj.previous_page_number}}" class='paginetor_link'>
+                Anterior
+            </a>
+        {% endif %}
+        <p class='paginetor_count'>
+            {{page_obj.number}}
+        </p>
+        {% if page_obj.has_next %}
+            <a href = "{%url 'eclipse:produtos_all'%}?page={{page_obj.next_page_number}}" class='paginetor_link'>
+                Proximo
+            </a>
+        {% endif %}
+    </section>
+{%endblock%}
