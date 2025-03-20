@@ -1,0 +1,75 @@
+header{
+    width: 100%;
+    height: 15vh;
+    background-image: url('/static/img/textura.png');
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#menu_button{
+    height: 55%;
+    width: 70px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 5%;
+}
+
+.img_100{
+    width: 100%;
+    height: 100%;
+    object-fit: contain
+}
+
+#logo_link{
+    aspect-ratio: 5/1 ;
+    width: 10%;
+    margin-left: 2.5%;
+
+}
+
+#pesquisar_area{
+    width: 40%;
+    height: 30%; 
+    background-color: #fff;
+    border-radius:25px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5px;
+    margin-left: 5%;
+}
+
+#pesquisa{
+    width: 90%;
+    height: 100%;
+    background: none;
+    border: none;
+    border-radius: 25px;
+    outline: none;
+}
+
+#pesquisar_button{
+    width: 10%;
+    height: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#user_nav_bar{
+    width: 30%;
+    margin-left: 5%;
+}
+
+#user_nav_bar>ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#user_nav_bar>ul>li{
+    aspect-ratio: 10/5;
+    width: 20%;
+}

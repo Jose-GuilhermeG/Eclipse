@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eclipse</title>
+    {%load static%}
+    <link rel="stylesheet" href="{%static 'css/nav_bar.css'%}">
+    <link rel="stylesheet" href="{%static 'css/global.css'%}">
+</head>
+<body>
+    <header>
+        <button id="menu_button">
+            <img src="{%static 'img/icones/menu.png'%}" alt="" id="menu_icone" class="img_100">
+        </button>
+        <a href="{%url 'eclipse:index'%}" id='logo_link'><img src="{%static 'img/logo.png'%}" alt="" class="img_100"></a>
+        <div id="pesquisar_area">
+            <input type="search" id="pesquisa" placeholder="Buscar produtos, marcas e muito mais...">
+            <button id="pesquisar_button">
+                <img src="{%static 'img/icones/lupa.png'%}" alt="" id="pesquisar_icone" class="img_100">
+            </button>
+        </div>
+        <nav id='user_nav_bar'>
+            <ul>
+                <li>
+                    <a href="">
+                        <img src="{%static 'img/icones/user.png'%}" alt="" class="img_100">
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="{%static 'img/icones/suporte.png'%}" alt="" class="img_100">
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="{%static 'img/icones/favoritos.png'%}" alt="" class="img_100">
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="{%static 'img/icones/carrinho.png'%}" alt="" class="img_100">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {%block content%}
+    
+        {%endblock%}
+    </main>
+<footer>
+    <h1>
+        Contato
+    </h1>
+    <ul>
+        <li>
+            email:projetoeclipseloja@gmail.com
+        </li>
+    </ul>
+</footer>
+</body>
+</html>
