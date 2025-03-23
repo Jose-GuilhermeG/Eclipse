@@ -32,6 +32,17 @@ body{
     --vermelho : #E03F69 ;
 }
 
+/*classes globais*/
+.cinza{
+    background-color: var(--cinza) !important;
+}
+.azul{
+    background-color: var(--azul) !important;
+}
+.vermelho{
+    background-color: var(--vermelho) !important;
+}
+
 /*load*/
 .load{
     width: 100px;

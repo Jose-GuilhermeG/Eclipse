@@ -86,15 +86,6 @@
     margin-top: 10px;
 }
 
-.cinza{
-    background-color: var(--cinza);
-}
-.azul{
-    background-color: var(--azul);
-}
-.vermelho{
-    background-color: var(--vermelho);
-}
 
 @media (max-width:1000px){
     #banner{

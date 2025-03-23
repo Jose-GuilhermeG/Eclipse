@@ -6,9 +6,16 @@
     <title>Eclipse</title>
     {%load static%}
     {% block links %}
+    <!--componenetes e reutilizaveis-->
+    <!--css-->
     <link rel="stylesheet" href="{%static 'css/nav_bar.css'%}">
+    <link rel="stylesheet" href="{%static 'css/menu.css'%}">
+    <link rel="stylesheet" href="{%static 'css/paginetor.css'%}">
     <link rel="stylesheet" href="{%static 'css/footer.css'%}">
     <link rel="stylesheet" href="{%static 'css/global.css'%}">
+    <!--js-->
+    <script type="module" src="{%static 'js/menu.js'%}"></script>
+    <script type="module" src="{%static 'js/nav_bar.js'%}"></script>
     {% endblock links %}
 </head>
 <body>
@@ -48,6 +55,21 @@
             </ul>
         </nav>
     </header>
+    <div id="menu">
+        <nav>
+            <ul id="menu_lista">
+                <li class="itens_menu"><a href="{%url 'eclipse:index'%}" class="links_menu user_itens">Inicio</a></li>
+                {%if user%}
+                    <li class="itens_menu"><a href="" class="links_menu user_itens">Conta</a></li>
+                {%else%}
+                    <li class="itens_menu"><a href="" class="links_menu user_itens">Entrar</a></li>      
+                {%endif%}              
+                <li class="itens_menu"><a href="" class="links_menu user_itens">Carrinho</a></li>
+                <li class="itens_menu"><a href="" class="links_menu user_itens">Favoritos</a></li>
+                <li class="itens_menu"><a href="" class="links_menu user_itens">Suporte</a></li>
+            </ul>
+        </nav>
+    </div>
     <main>
         {%block content%}
     

@@ -26,7 +26,7 @@
             <img src="{{produto_mes.imagem.url}}" alt="imagem do produto do mes" id="imagem_banner">
         </div>
         <div id="categorias_conteiner">
-            <a href="">
+            <a href="{%url 'eclipse:categorias' 'Gamer'%}">
                 <div class="categorias cinza">
                     <img src="{%static 'img/categorias/gamer.png'%}" alt="" class="img_categoria ">
                     <h1 class="nome_categoria">
@@ -34,7 +34,7 @@
                     </h1>
                 </div>
             </a>
-            <a href="">
+            <a href="{%url 'eclipse:categorias' 'escritorio'%}">
                 <div class="categorias azul">
                     <img src="{%static 'img/categorias/escritorio.png'%}" alt="" class="img_categoria ">
                     <h1 class="nome_categoria">
@@ -42,7 +42,7 @@
                     </h1>
                 </div>
             </a>
-            <a href="">
+            <a href="{%url 'eclipse:categorias' 'upgrades'%}">
                 <div class="categorias vermelho">
                     <img src="{%static 'img/categorias/upgrade.png'%}" alt="" class="img_categoria ">
                     <h1 class="nome_categoria">
@@ -54,7 +54,10 @@
     </section>
     <section>
         {%block produtos%}
-
+            <h1 class="titulo_conteiner">
+                Voce pode gostar
+            </h1>
+            
         {%endblock produtos%}
     </section>
 {% endblock  %}

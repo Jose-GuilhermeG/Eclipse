@@ -1,24 +1,66 @@
 {% extends "base.html" %}
+{%load static%}
+
+{% block links %}
+    {{block.super}}
+    <link rel="stylesheet" href="{%static 'css/produto.css'%}">
+    <script type="module" src="{%static 'js/produto.js'%}"></script>
+{% endblock  %}
 
 {% block content %}
-    <section>
+    <section id='base_dados'>
         <div id="imagem_local">
-            <img src="{{produto.imagem.url}}" alt="{{produto.nome}} imagem">
+            <img src="{{produto.imagem.url}}" alt="{{produto.nome}} imagem" id="imagem_produto">
         </div>
         <div id="info">
             <h1 class="info_itens">
                 {{produto.nome}}
             </h1>
             <span class="info_itens">
-                {{produto.preço}}
+                R$ {{produto.preço}}
             </span>
-            {%if produto.descrição%}
-                {{produto.descrição|linebreaks}}
-            {%else%}
-                <h1>
-                    produto não tem descrição
-                </h1>
-            {%endif%}
+            <h2 class="info_itens">
+                Versões do produto
+            </h1>
+            {% for versão in produto.pegar_versões %}
+                <div class="versão">
+                    {{versão.nome}}
+                </div>
+            {%empty%}
+                <p>
+                    Produto não tem mais nenhuma versão
+                </p>
+            {% endfor %}
         </div>
+    </section>
+    <aside id="options">
+            <span id="quantia_area">
+                <label for="quantia">
+                    quantia:
+                </label>
+                <select name="quantia" id="quantia" value>
+                <!--sera colocado com js,o codigo ficara mais limpo-->
+                </select>
+            </span>
+       
+        <button class="button_options cinza">
+            Adicionar ao carrinho
+        </button>
+        <button class="button_options">
+            comprar
+        </button>
+    </aside>
+    <section >
+        <h1>
+            descrição:
+        </h1>
+        <br>
+        {%if produto.descrição %}
+            {{produto.descrição|linebreaks}}
+        {%else%}
+            <p>
+                Produto não tem uma descrição
+            </p>
+        {%endif%}
     </section>
 {% endblock  %}

@@ -1,0 +1,39 @@
+.paginetor_content{
+    width: 25%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+#paginetor_count{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    text-align: center;
+    width: 50%;
+    margin: auto;
+    background-color: var(--branco_opaco);
+    font-size: 1.2rem;
+}
+
+#next_page_link{
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+#previous_page_link{
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+.paginetor_link{
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: var(--azul);
+}
+
+@media (max-width:700px) {
+    .paginetor_content{
+        width: 100%;
+    }
+}

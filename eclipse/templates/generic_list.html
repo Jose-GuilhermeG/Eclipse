@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+
+{% block content %}
+<section>
+        {%if titulo%}
+            <h1>
+                {{titulo}}
+            </h1>
+        {%endif%}
+        {% for produto in produtos %}
+            {% include "componentes/conteiner_produto.html" %}
+            {%empty%}
+            <p>
+                {%if vazio_menssagem%}
+                    {{vazio_menssagem}}
+                {%else%}
+                    não ha nada aqui
+                {%endif%}
+            </p>
+        {% endfor %}
+    </section>
+    {% include "componentes/paginetor.html" %}
+{% endblock %}

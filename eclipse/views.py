@@ -4,7 +4,11 @@ from django.core.paginator import Paginator
 
 
 #models
-from .models import Produtos
+from .models import Produtos,Variantes
+
+#filtros
+from .filters import ProdutosFilter
+from django_filters.views import FilterView
 
 # Create your views here.
 class Index(TemplateView):
@@ -20,8 +24,32 @@ class ProdutoView(DetailView):
     slug_url_kwarg = "slug"
     context_object_name = "produto"
     
-class ProdutosAllView(ListView):
-    queryset = Produtos.objects.all()
-    template_name = 'produtos_all.html'
+class ProdutosAllView(FilterView):
+    #list
+    template_name = 'generic_list.html'
     paginate_by = 10
     context_object_name = "produtos"
+    extra_context = {'vazio_menssagem' : 'parece que não temos nenhum produto'}
+    #filter
+    model = Produtos
+    filterset_class = ProdutosFilter
+    
+class CategoriasProdutosView(ListView):
+    template_name="generic_list.html"
+    context_object_name="produtos"
+    paginate_by=10
+    extra_context = {'vazio_menssagem' : 'nenhum produto para essa categoria'}
+    
+    def get_queryset(self):
+        categoria = self.kwargs.get("categoria", "")
+        return Produtos.objects.pegar_produtos_por_categoria(categoria)
+
+class PesquisarProdutosView(ListView):
+    template_name="generic_list.html"
+    context_object_name ='produtos'
+    paginate_by=10
+    extra_context = {"vazio_menssagem" : "Não ha resultados para essa pesquisa"}
+    
+    def get_queryset(self):
+        pesquisa = self.kwargs.get("pesquisa")
+        return Produtos.objects.pesquisa(pesquisa)

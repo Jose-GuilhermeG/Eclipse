@@ -1,0 +1,125 @@
+#base_dados{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 70%;
+    height: 100vh;
+    padding: 70px 0;
+}
+
+#imagem_local{
+    width: 50%;
+    height: 70%;
+    border: 2px solid black;
+    border-radius: 15px;
+    margin-left: 5%;
+    position: relative;
+}
+
+#imagem_produto{
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    position: absolute;
+    left: 5%;
+    top: 5%;
+}
+
+#info{
+    width: 50%;
+}
+
+.info_itens{
+    margin-top: 5%;
+    margin-left: 5%;
+}
+
+#info>h1{
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+}
+
+#info > span{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+#options{
+    width: 25%;
+    position: absolute;
+    right: 5%;
+    top: 25vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+}
+
+#quantia_area{
+    position: absolute;
+    top: 30%;
+}
+
+#quantia{
+    background: none;
+    border: none;
+}
+
+.button_options{
+    width: 90%;
+    height: 9vh;
+    margin: 2.5% 0 2.5% 0 ;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color:white;
+    background-color: var(--azul);
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+}
+
+@media (max-width:1000px) {
+    #base_dados{
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
+
+@media (max-width:700px) {
+    #base_dados{
+        width: 100%;
+        height: 70vh;
+    }
+    #imagem_local{
+        width: 90%;
+        height: 50%;
+        margin: 0;
+    }
+    #options{
+        position: relative;
+        width: 100%;
+        height: 40vh;
+        flex-direction: column;
+        justify-content: center;
+        left: 0;
+        top: 0;
+        border: none;
+    }
+    #quantia_area{
+        top: 0;
+    }
+    .button_options{
+        width: 40%;
+        width: 90%;
+    }
+
+}
+
+@media (max-width:500px) {
+    .button_options{
+        font-size: 1rem;
+    }
+}
