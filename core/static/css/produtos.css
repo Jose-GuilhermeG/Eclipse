@@ -1,6 +1,6 @@
 .produtos{
-    max-width: 20%;
     min-width: 250px;
+    width: 20%;
     height: 410px;
     background-color:var( --branco_opaco);
     padding: 5px;

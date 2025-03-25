@@ -10,11 +10,19 @@ from .models import Produtos,Variantes
 from .filters import ProdutosFilter
 from django_filters.views import FilterView
 
+#mixin
+from .mixin import MultiItensView
+
 # Create your views here.
-class Index(TemplateView):
+class Index(MultiItensView,TemplateView):
     template_name = "index.html"
     extra_context = {'produto_mes' : Produtos.objects.get(id=2)}
-
+    pages_name = 'page'
+    model = Produtos
+    paginate_by = 6
+    context_object_name = 'produtos'
+    
+    
 #views produtos
 
 class ProdutoView(DetailView):

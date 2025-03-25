@@ -57,7 +57,14 @@
             <h1 class="titulo_conteiner">
                 Voce pode gostar
             </h1>
-            
+            <div class="conteiner">
+                {%for produto in produtos%}
+                    {%include 'componentes/conteiner_produto.html'%}
+                {%endfor%}
+            </div>
+            {%if pagina_obj.has_next%}
+                <a href="{%url 'eclipse:index'%}?page={{pagina_obj.next_page_number}}" class="button_conteiner">Ver mais</a>
+            {%endif%}
         {%endblock produtos%}
     </section>
 {% endblock  %}
